@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>Search - Naive</title>
+      <title>Search - Leif's Blog</title>
   
 
   
@@ -92,7 +92,7 @@ crossorigin="anonymous"></script>
 		</div>
 		<div class='header-text'>
 			<h1>
-				<a href="/">Naive</a>
+				<a href="/">Leif's Blog</a>
 			</h1>
 			<subtitle>
 				Stay simple, Stay young
@@ -113,7 +113,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='Archivi'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -122,7 +122,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon active_dot'>
 		
-			<a href="/search/" title='Cerca'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -197,7 +197,7 @@ crossorigin="anonymous"></script>
 			"tags"
 		]
 	};
-	var s = '[{"title":"Hello World","date":"2018-08-09T14:15:31.507Z","content":"Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.\nQuick StartCreate a new post1$ hexo new My New Post\nMore info: Writing\nRun server1$ hexo server\nMore info: Server\nGenerate static files1$ hexo generate\nMore info: Generating\nDeploy to remote sites1$ hexo deploy\nMore info: Deployment\n","tags":[],"path":"2018/08/09/hello-world/","external_link":""},{"title":"test_article","date":"2018-08-09T15:04:45.000Z","content":"Chapter 11.1 hello worldmy first post.\n","tags":[],"path":"2018/08/09/test-article/","external_link":""}]';
+	var s = '[{"title":"Hello World","date":"2018-08-09T14:15:31.507Z","content":"Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.\nQuick StartCreate a new post1$ hexo new My New Post\nMore info: Writing\nRun server1$ hexo server\nMore info: Server\nGenerate static files1$ hexo generate\nMore info: Generating\nDeploy to remote sites1$ hexo deploy\nMore info: Deployment\n","tags":[],"path":"2018/08/09/hello-world/","external_link":""},{"title":"Make software work properly behind proxy","date":"2018-08-10T04:00:58.000Z","content":"由于系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.\n系统代理有一些软件（比如Chrome和Firefox, 命令行中的pip）会默认使用系统代理，也就是说，只要你正确设置了系统代理，这部分软件就能正常联网了。\n通过图形界面设置前往Settings -&gt; Network -&gt; Network Proxy -&gt; Manual， 然后如下图所示\n\n注意：填写的地址不要包含“http:”或”https:“字段,直接填写域名或ip.\n(一定要皮一下加上？那好，在命令行下执行”echo $HTTP_PROXY”，看到了什么？在我测试的Ubuntu 18.04下此时仍然可以正常上网，但是一些命令行软件却无法建立互联网连接了) \n\n通过命令行设置当然，你也可以在命令行下修改，也就是HTTPS_PROXY和HTTP_PROXY加入环境变量。但是由于在图形界面添加的代理没有问题，我没有尝试。有点担心这样能否对对图形界面的程序（比如浏览器）生效。\n注意：不管是HTTPS_PROXY还是HTTP_PROXY,都应该设置为”http:…”，如果你将HTTPS_PROXY设为”https:…”，有些软件就不能正常使用了，请参考[3]。\n关于GUI和命令行设置代理的区别一个非常有趣的现象是，当我通过GUI设置代理之后，尽管在终端中能通过12echo $HTTP_PROXYecho $HTTPS_PROXY\n查看代理环境变量，但是却无法在etcenvironment或者etcbash.bashrc或者etc.bashrc中发现关于这两个环境变量的记录。我原以为通过GUI设置就会将代理变量写入这些文件。[1]中提到：\n\n如果在GUI设置时apply systme wide (我的Ubuntu 18.04没有该选项)，那么环境变量就会写入etcenvironment 和 etcaptapt.conf， 否则代理变量只存放在gsettings database(就是GUI的数据库？)中。\n通过在.bashrc添加代理环境变量通过不会对图形界面程序生效。\n\n不默认使用系统代理的软件apt设置完系统代理后，sudo apt install命令可以正常联网安装软件了，奇怪的是sudo apt update 和 sudo apt add-apt-repository均无法建立互联网连接。一个快速的解决方式如下12sudo -E apt install sofware-namesudo -E apt add-apt-repository ppa:xxyy\n关于这么做的原理，可以参考[2]，简单来说，sudo执行命令时默认不会保留当前用户的环境变量，而-E参数使得环境变量得以保留。（那么为啥不加-E参数时, sudo apt install没毛病呢? emmmmm, 我也不知道）\n当然也可以在apt内设置代理:123456sudo vim etcaptapt.conf然后在apt.conf中添加下面两行并保存Acquire::http::proxy &quot;http:lgn:pwd@proxy_sever:proxy_port&quot;;Acquire::https::proxy &quot;http:lgn:pwd@proxy_sever:proxy_port&quot;;如果代理服务器不需要账户和密码则不需要lgn:pwd@字段。\ngit系统代理设置完成后使用git克隆远程github仓库发现没有响应，使用的命令如下：1git clone git@github.com:LeifZhuLeifZhu.github.io.git\n因为这时使用的是ssh协议，穿不透代理。你可以选择换成clone with https，即执行1git clone https:github.comLeifZhuLeifZhu.github.io.git\n或者参考[4]或者[5]通过https支持ssh协议。以我的使用为例先安装corkscrew1sudo apt install corkscrew\n然后修改~.sshconfig,添加123456Host github.com\tUser git\tHostname ssh.github.com\tPort 443\tProxyCommand usrbincorkscrew proxy.cse.cuhk.edu.hk 8000 %h %p\tIdentityFile ~.sshid_rsa\n总结\n在图形界面设置系统代理时不要加上协议头”http:“\n即使设置了系统代理，一些软件也可能需要在软件内再设置代理。如果你发现浏览器能上网而命令行软件不能，那么你应该考虑配置软件内代理，或者对于sudo命令加上-E参数。\n无论是HTTP_PROXY,还是HTTPS_PROXY,都应该设置为”http:…”\n\n参考[1]https:askubuntu.comquestions830796proxy-config-gui-vs-setting-http-proxy-in-etc-environment\n[2]https:stackoverflow.comquestions8633461how-to-keep-environment-variables-when-using-sudo\n[3]https:serverfault.comquestions817680https-through-an-http-only-proxy\n[4]https:unix.stackexchange.comquestions190490how-to-use-ssh-over-http-or-https\n[5]https:blog.csdn.nettwilightdreamarticledetails78260394\n","tags":["linux","踩坑记录"],"path":"2018/08/10/make-software-work-properly-behind-proxy/","external_link":""}]';
 
 	s = s.replace(/\\n/g, "\\n")
                .replace(/\\'/g, "\\'")
@@ -238,7 +238,7 @@ crossorigin="anonymous"></script>
 
 <div class='tagcloud-container'>
 <div class='tag-cloud'>
-	
+	<a href="/tags/linux/" style="font-size: 0.8em; color: #488baf">linux</a> <a href="/tags/踩坑记录/" style="font-size: 0.8em; color: #488baf">踩坑记录</a>
 </div>
 </div>
 
@@ -250,7 +250,7 @@ crossorigin="anonymous"></script>
     <div class='footer-copyright'>
         <div>
             <p> Copyright by <a href="">ZHU Lei </a> @ 2018</p>
-            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> e <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Tema: <a href="https://qutang.github.io/cutie/">Cutie 2.1.0-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://qutang.github.io/cutie/">Cutie 2.1.0-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -274,7 +274,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='Archivi'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -283,7 +283,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon active_dot'>
 		
-			<a href="/search/" title='Cerca'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
