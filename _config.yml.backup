@@ -4,8 +4,8 @@
 
 # Site
 title: Leif's Blog
-subtitle: Stay simple, stay young.
-description: 静下来，慢下来
+subtitle: Stay simple, Stay young
+description:
 keywords:
 author: ZHU Lei
 language:
@@ -73,14 +73,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next-my-custom
+theme: cutie
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-- type: git
-  repository: git@github.com:LeifZhu/LeifZhu.github.io.git
-  branch: master
 - type: git
   repository: git@github.com:LeifZhu/LeifZhu.github.io.git
   branch: src
@@ -88,3 +85,6 @@ deploy:
   ignore_hidden: false
   ignore_pattern:
       public: .
+- type: git
+  repository: git@github.com:LeifZhu/LeifZhu.github.io.git
+  branch: master
