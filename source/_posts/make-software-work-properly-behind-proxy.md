@@ -1,10 +1,11 @@
 ---
 title: Make software work properly behind proxy
 date: 2018-08-10 12:00:58
-tags: [linux, 踩坑记录]
+tags: [linux]
 ---
 
-由于系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.
+系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.
+<!--more-->
 
 # 系统代理
 有一些软件（比如Chrome和Firefox, 命令行中的pip）会默认使用系统代理，也就是说，只要你正确设置了系统代理，这部分软件就能正常联网了。
@@ -87,8 +88,7 @@ Host github.com
 
 [2]https://stackoverflow.com/questions/8633461/how-to-keep-environment-variables-when-using-sudo
 
-[3]
-https://serverfault.com/questions/817680/https-through-an-http-only-proxy
+[3]https://serverfault.com/questions/817680/https-through-an-http-only-proxy
 
 [4]https://unix.stackexchange.com/questions/190490/how-to-use-ssh-over-http-or-https
 
