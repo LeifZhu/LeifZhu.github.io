@@ -99,11 +99,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     generate_map_file(args.data_dir)
 ```
-并执行
+然后执行
 ```
 python map_file.py --data_dir ~/dataset/imagenet8/raw
 ```
-再进行就没有问题了。
+再进行训练就没有问题了。
 
 如果你要根据元文件(应该是个xml?我没有原始数据集，太大了下不动)为原始的imagenet  ILSVRC数据集生成map file，请参考[这里[4]](https://github.com/Microsoft/CNTK/issues/2091)。
 
