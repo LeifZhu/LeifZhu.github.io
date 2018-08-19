@@ -6,7 +6,7 @@ tags: [git]
 
 本文介绍决执行`git pull`时，错误`error: Your local changes to the following files would be overwritten by merge`的产生原因和解决方法。
 <!--more-->
-## 问题：git pull时遇到冲突
+## 问题
 git pull博客源代码仓库的时候发现冲突
 
 ```
