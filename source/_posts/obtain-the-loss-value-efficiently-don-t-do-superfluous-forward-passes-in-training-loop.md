@@ -4,6 +4,7 @@ title: >-
   training loop
 date: 2018-08-21 14:50:40
 tags: [deep learning]
+category: 人生经验
 ---
 
 在利用Tensorflow或CNTK训练DNN的时候，我们可能需要在一次迭代后获得当前的loss或者其他metric。一种常见的方式是：通过一次forward pass计算loss(比如tensorflow的loss.eval())。但是这样带来的额外消耗是没有必要的，因为在训练过程中已经进行过forward pass。
