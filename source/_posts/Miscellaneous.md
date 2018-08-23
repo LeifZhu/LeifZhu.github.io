@@ -8,9 +8,53 @@ category: 见得多了
 This post will be used to keep track of daily bugs, workaroud, solutions, collections,links and so on.
 <!--more-->
 
+## linux
+### inode
+两个很好的参考链接：
+* [阮一峰的日志](http://www.ruanyifeng.com/blog/2011/12/inode.html)
+* [鸟哥的linux私房菜](http://cn.linux.vbird.org/linux_basic/0230filesystem.php)
+
+概括：
+* 磁盘分为inode区和data block区，磁盘一经格式化就会少一部分空间，这部分空间被inode区占用。尽管**分配时是按磁盘块比例分配**的，在后续使用中实际上是**一个inode对应一个文件，一个文件可能对应多个inode**, 因既有可能出现inode用完而data block还有空余空间的情况(每个文件都太小，比如，只占一个block)，也有可能出现inode还剩很多，但data block已经装满的情况(每个文件都很大)。
+* 文件目录也是文件，它有inode，也有data blocks，它的data blocks里以[\<inode\> \<filename\>}]的格式记录该目录下文件名->inode号的映射
+* inode里面除了data block的索引区块（分为直接索引，一次间址， 两次间址， 三次间址）外，还有一些文件的元信息，如权限，修改时间，大小等。**用`stat <filename>`命令可以查看**。
+* 对于目录，天生具有两个硬链接，一个在其父目录下，一个是本身下面的`.`，所以**一个目录的links = 2 + “普通”子目录个数**（“普通”的意思是不包含`.`和`..`）
+* 考虑到查找文件的性能，linux源码中规定**一个目录下最多只能包含3200个子文件（考虑`.`和`..`还要减去2）**，所以目录文件的大小并不能达到单个文件的理论最大值[（来源）](http://www.51testing.com/html/38/225738-236959.html)
+* 一图胜千言。下图中的黄色表格是目录的data block
+
+{% asset_img inode.png 文件查找 %}
+
+### ubuntu 18.04 安装opencv
+参考这个[链接](https://linuxconfig.org/install-opencv-on-ubuntu-18-04-bionic-beaver-linux)
+cntk依赖3.1版，这个目前会安装3.2版，一个workaround是创建软链接欺骗cntk。
+
+### `xx > /dev/null 2>&1` 的意义
+* 意义：将xx的STDOUT重定位到/dev/null(黑洞), STDERR重定位到STDOUT，总的来说就是把程序的任何输出都丢到黑洞。
+* 1前面为什么要加&：如果不加，STDERR就会重定位到一个文件，文件名为'1'。加&予以区分。[(来源)](https://www.xaprb.com/blog/2006/06/06/what-does-devnull-21-mean/)
+---------------------------------
+## Shell
+
+### shell tutorial
+[中文](http://www.runoob.com/linux/linux-shell.html)
+
+[英文](https://www.tutorialspoint.com/unix/)
+
+### Syntax error: Bad for loop variable
+检查你是不是用sh执行脚本的？是的话换bash看看。sh不支持for循环。
+
+### bash脚本比较浮点数大小
+bash本身只支持比较整数，要比较浮点数大小用下面的方式[(来源)](https://stackoverflow.com/questions/9939546/comparison-of-integer-and-floating-point-numbers-in-shell-script):
+```bash
+if [ $(echo "23.3 > 7.3" | bc) -ne 0 ] 
+then 
+  echo "wassup"
+fi
+```
+
+
+---------------------------------
 ## git
-官方文档是坠吼的：[English](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
----[中文](https://git-scm.com/book/zh/v2)
+官方文档是坠吼的：[English](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)-[中文](https://git-scm.com/book/zh/v2)
 ### .gitignore快速教程
 一个例子,来自[这里](https://www.cnblogs.com/ShaYeBlog/p/5355951.html)
 ```

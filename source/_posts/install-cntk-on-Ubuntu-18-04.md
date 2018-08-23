@@ -6,7 +6,7 @@ tags: [linux]
 
 按照官网教程[[1]](https://docs.microsoft.com/en-us/cognitive-toolkit/setup-linux-python?tabs=cntkpy251)，用pip安装cntk仅需简单两步，但是在实际操作中，安装完毕后可能会报错。本文对安装过程做简单总结。
 <!--more-->
-## 安装过程
+## CNTK-Python 安装过程
 顺次执行下列命令
 ```
 sudo apt install openmpi-bin
@@ -84,6 +84,18 @@ sudo apt update
 sudo apt install libjasper1 libjasper-dev
 ```
 
+--------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<更新>>>>>>>>>>>>>>>>>>>>>>
+## BrainScript API 安装及报错处理
+要使用Brainscript，必须源码安装CNKT。这个太小众了，要不是有特殊需要我才懒得装。下面的介绍从简。
+### 安装方法
+参考这个页面[[5]](https://docs.microsoft.com/en-us/cognitive-toolkit/Install-CNTK-BrainScript#manual-install-1)
+建议用Manual install方式。
+### 解决libiomp5.so和libmklml_intel.so缺失
+安装Intel Math Kernel Library (MKL), 参考这里[[6]](https://software.intel.com/en-us/articles/intel-mkl-dnn-part-1-library-overview-and-installation)
+(网上一堆说用`source /opt/intel/bin/compilervars.sh intel64`的，但是只有安装了Intel的编译器才会有`/opt/intel/bin/compilervars.sh`这个文件，而且安装了也只能解决libiomp5.so的问题。其实直接安装libmklml_intel.so就好。)
+
+
 
 ## 参考
 [1]https://docs.microsoft.com/en-us/cognitive-toolkit/setup-linux-python?tabs=cntkpy251
@@ -93,3 +105,7 @@ sudo apt install libjasper1 libjasper-dev
 [3]https://github.com/tcoopman/image-webpack-loader/issues/95
 
 [4]https://stackoverflow.com/questions/43484357/opencv-in-ubuntu-17-04/43507858
+
+[5]https://docs.microsoft.com/en-us/cognitive-toolkit/Install-CNTK-BrainScript#manual-install-1
+
+[6]https://software.intel.com/en-us/articles/intel-mkl-dnn-part-1-library-overview-and-installation
