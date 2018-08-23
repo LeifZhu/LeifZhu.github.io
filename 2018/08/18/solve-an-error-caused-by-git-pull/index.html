@@ -106,27 +106,25 @@
 
 
 
-  <meta name="description" content="系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.">
-<meta name="keywords" content="linux">
+  <meta name="description" content="本文介绍决执行git pull时，错误error: Your local changes to the following files would be overwritten by merge的产生原因和解决方法。">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Make software work properly behind proxy">
-<meta property="og:url" content="http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/index.html">
+<meta property="og:title" content="解决error:&amp;ensp; Your local changes to the following files would be overwritten by merge">
+<meta property="og:url" content="http://leifzhu.github.io/2018/08/18/solve-an-error-caused-by-git-pull/index.html">
 <meta property="og:site_name" content="Leif&#39;s Blog">
-<meta property="og:description" content="系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.">
+<meta property="og:description" content="本文介绍决执行git pull时，错误error: Your local changes to the following files would be overwritten by merge的产生原因和解决方法。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://leifzhu.github.io/images/system_proxy.png">
-<meta property="og:updated_time" content="2018-08-18T15:19:22.773Z">
+<meta property="og:updated_time" content="2018-08-23T16:08:12.720Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Make software work properly behind proxy">
-<meta name="twitter:description" content="系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.">
-<meta name="twitter:image" content="http://leifzhu.github.io/images/system_proxy.png">
+<meta name="twitter:title" content="解决error:&amp;ensp; Your local changes to the following files would be overwritten by merge">
+<meta name="twitter:description" content="本文介绍决执行git pull时，错误error: Your local changes to the following files would be overwritten by merge的产生原因和解决方法。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/"/>
+  <link rel="canonical" href="http://leifzhu.github.io/2018/08/18/solve-an-error-caused-by-git-pull/"/>
 
 
 
@@ -136,7 +134,7 @@
   };
 </script>
 
-  <title>Make software work properly behind proxy | Leif's Blog</title>
+  <title>解决error:&ensp; Your local changes to the following files would be overwritten by merge | Leif's Blog</title>
   
 
 
@@ -332,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/">
+    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/08/18/solve-an-error-caused-by-git-pull/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHU Lei">
@@ -349,7 +347,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Make software work properly behind proxy</h2>
+          <h2 class="post-title" itemprop="name headline">解决error:&ensp; Your local changes to the following files would be overwritten by merge</h2>
         
 
         <div class="post-meta">
@@ -361,7 +359,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T12:00:58+08:00">2018-08-10</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T23:42:16+08:00">2018-08-18</time>
             
 
             
@@ -379,9 +377,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/10/make-software-work-properly-behind-proxy/#comments" itemprop="discussionUrl">
+                <a href="/2018/08/18/solve-an-error-caused-by-git-pull/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/10/make-software-work-properly-behind-proxy/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/08/18/solve-an-error-caused-by-git-pull/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,38 +407,29 @@
       
 
       
-        <p>系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.<br><a id="more"></a></p>
-<h1 id="系统代理"><a href="#系统代理" class="headerlink" title="系统代理"></a>系统代理</h1><p>有一些软件（比如Chrome和Firefox, 命令行中的pip）会默认使用系统代理，也就是说，只要你正确设置了系统代理，这部分软件就能正常联网了。</p>
-<h2 id="通过图形界面设置"><a href="#通过图形界面设置" class="headerlink" title="通过图形界面设置"></a>通过图形界面设置</h2><p>前往Settings -&gt; Network -&gt; Network Proxy -&gt; Manual， 然后如下图所示</p>
-<p><img src="/images/system_proxy.png" alt=""></p>
-<p><strong>注意</strong>：填写的地址不要包含“http://”或”https://“字段,直接填写域名或ip.</p>
-<font size="1">(一定要皮一下加上？那好，在命令行下执行”echo $HTTP_PROXY”，看到了什么？在我测试的Ubuntu 18.04下此时仍然可以正常上网，但是一些命令行软件却无法建立互联网连接了) </font>
-
-<h2 id="通过命令行设置"><a href="#通过命令行设置" class="headerlink" title="通过命令行设置"></a>通过命令行设置</h2><p>当然，你也可以在命令行下修改，也就是HTTPS_PROXY和HTTP_PROXY加入环境变量。但是由于在图形界面添加的代理没有问题，我没有尝试。有点担心这样能否对对图形界面的程序（比如浏览器）生效。</p>
-<p><strong>注意</strong>：不管是HTTPS_PROXY还是HTTP_PROXY,都应该设置为”http://…”，如果你将HTTPS_PROXY设为”https://…”，有些软件就不能正常使用了，请参考<a href="https://serverfault.com/questions/817680/https-through-an-http-only-proxy" target="_blank" rel="noopener">[3]</a>。</p>
-<h2 id="关于GUI和命令行设置代理的区别"><a href="#关于GUI和命令行设置代理的区别" class="headerlink" title="关于GUI和命令行设置代理的区别"></a>关于GUI和命令行设置代理的区别</h2><p>一个非常有趣的现象是，当我通过GUI设置代理之后，尽管在终端中能通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $HTTP_PROXY</span><br><span class="line">echo $HTTPS_PROXY</span><br></pre></td></tr></table></figure></p>
-<p>查看代理环境变量，但是却无法在/etc/environment或者/etc/bash.bashrc或者/etc/.bashrc中发现关于这两个环境变量的记录。我原以为通过GUI设置就会将代理变量写入这些文件。<br><a href="https://askubuntu.com/questions/830796/proxy-config-gui-vs-setting-http-proxy-in-etc-environment" target="_blank" rel="noopener">[1]</a>中提到：</p>
+        <p>本文介绍决执行<code>git pull</code>时，错误<code>error: Your local changes to the following files would be overwritten by merge</code>的产生原因和解决方法。<br><a id="more"></a></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>git pull博客源代码仓库的时候发现冲突</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Leif@pc90005 blog]$ git pull</span><br><span class="line">Updating f89b7be..01cc068</span><br><span class="line">error: Your local changes to the following files would be overwritten by merge:</span><br><span class="line">	_config.yml</span><br><span class="line">Please commit your changes or stash them before you merge.</span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure>
+<p>执行git status检查目录状态显示如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[Leif@pc90005 blog]$ git status</span><br><span class="line">On branch src</span><br><span class="line">Your branch is behind &apos;origin/src&apos; by 1 commit, and can be fast-forwarded.</span><br><span class="line">  (use &quot;git pull&quot; to update your local branch)</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">	modified:   _config.yml</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line"></span><br><span class="line">	source/_posts/MXNet-alexnet-cifar10.md</span><br><span class="line">	source/_posts/MXNet-stop-training-by-loss.md</span><br><span class="line">	source/_posts/git-submodule.md</span><br><span class="line">	source/_posts/ssh-collection.md</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>从上面的结果来看，是因为我修改了_config.yml，导致该文件和服务器上最新的版本不同导致的合并冲突。此时如果git将服务器上的_config.yml（为了区分，记为_config.yml[remote]）拉下来直接覆盖本地文件（记为_config.yml[local]），那么_config.yml[local]中所做的更改就再也找不回来了，这是因为_config.yml[local]还没有commit。git不会擅做这种主张，导致你没有后悔药吃。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="checkout-丢弃本地所做的更改"><a href="#checkout-丢弃本地所做的更改" class="headerlink" title="checkout:丢弃本地所做的更改"></a>checkout:丢弃本地所做的更改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD _config.yml</span><br></pre></td></tr></table></figure>
+<p>此时执行<code>git pull</code>， git发现当前工作区是干净的，就放心地将_config.yml[remote]下拉回来了。注意，这样的话，你等于主动丢弃_config.yml[local]中所做的更改，这些更改无法恢复。</p>
+<h3 id="commit-将修改提交到仓库"><a href="#commit-将修改提交到仓库" class="headerlink" title="commit: 将修改提交到仓库"></a>commit: 将修改提交到仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m &quot;modified _config.yml&quot;</span><br></pre></td></tr></table></figure>
+<p>同样地，这时工作区是干净的，所以<code>git pull</code>也没有问题。因为已经提交到仓库，你总是有办法找回_config.yml[local]。</p>
+<h3 id="stash-将当前的工作目录另存到储藏栈上"><a href="#stash-将当前的工作目录另存到储藏栈上" class="headerlink" title="stash: 将当前的工作目录另存到储藏栈上"></a>stash: 将当前的工作目录另存到储藏栈上</h3><p>如果你不想丢失_config.yml[local]又不想因为这么一点小小的改动就创建一次commit（比如，你希望至少完成一篇博客才做一次提交），那么可以使用<code>git stash</code>。按序执行以下三条命令可以让你将_config.yml[remote]下拉回来，然后和_config.yml[local]合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+<p>关于stash的功能和用法可以参考<a href="https://git-scm.com/book/zh/v2/Git-工具-储藏与清理" target="_blank" rel="noopener">[1]</a>。简单来说，<code>git stash</code>会</p>
 <ol>
-<li>如果在GUI设置时apply systme wide (我的Ubuntu 18.04没有该选项)，那么环境变量就会写入/etc/environment 和 /etc/apt/apt.conf， 否则代理变量只存放在gsettings database(就是GUI的数据库？)中。</li>
-<li>通过在.bashrc添加代理环境变量通过不会对图形界面程序生效。</li>
+<li>先将你当前的工作目录暂存到一个“储藏栈”的栈顶（这个储藏栈和“暂存区”或者“仓库”不是一个地方）</li>
+<li>然后恢复到你上次提交完的状态(相当于再执行<code>git reset --hard</code>)</li>
 </ol>
-<h1 id="不默认使用系统代理的软件"><a href="#不默认使用系统代理的软件" class="headerlink" title="不默认使用系统代理的软件"></a>不默认使用系统代理的软件</h1><h2 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h2><p>设置完系统代理后，sudo apt install命令可以正常联网安装软件了，奇怪的是sudo apt update 和 sudo apt add-apt-repository均无法建立互联网连接。一个快速的解决方式如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -E apt install sofware-name</span><br><span class="line">sudo -E apt add-apt-repository ppa:xx/yy</span><br></pre></td></tr></table></figure></p>
-<p>关于这么做的原理，可以参考<a href="https://stackoverflow.com/questions/8633461/how-to-keep-environment-variables-when-using-sudo" target="_blank" rel="noopener">[2]</a>，简单来说，sudo执行命令时默认不会保留当前用户的环境变量，而-E参数使得环境变量得以保留。（那么为啥不加-E参数时, sudo apt install没毛病呢? emmmmm, 我也不知道）</p>
-<p>当然也可以在apt内设置代理:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/apt.conf</span><br><span class="line"></span><br><span class="line">然后在apt.conf中添加下面两行并保存</span><br><span class="line">Acquire::http::proxy &quot;http://lgn:pwd@proxy_sever:proxy_port&quot;;</span><br><span class="line">Acquire::https::proxy &quot;http://lgn:pwd@proxy_sever:proxy_port&quot;;</span><br><span class="line">如果代理服务器不需要账户和密码则不需要lgn:pwd@字段。</span><br></pre></td></tr></table></figure></p>
-<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>系统代理设置完成后使用git克隆远程github仓库发现没有响应，使用的命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:LeifZhu/LeifZhu.github.io.git</span><br></pre></td></tr></table></figure></p>
-<p>因为这时使用的是ssh协议，穿不透代理。你可以选择换成clone with https，即执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/LeifZhu/LeifZhu.github.io.git</span><br></pre></td></tr></table></figure></p>
-<p>或者参考<a href="https://unix.stackexchange.com/questions/190490/how-to-use-ssh-over-http-or-https" target="_blank" rel="noopener">[4]</a>或者<a href="https://blog.csdn.net/twilightdream/article/details/78260394" target="_blank" rel="noopener">[5]</a>通过https支持ssh协议。以我的使用为例<br>先安装corkscrew<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install corkscrew</span><br></pre></td></tr></table></figure></p>
-<p>然后修改~/.ssh/config,添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">	User git</span><br><span class="line">	Hostname ssh.github.com</span><br><span class="line">	Port 443</span><br><span class="line">	ProxyCommand /usr/bin/corkscrew proxy.cse.cuhk.edu.hk 8000 %h %p</span><br><span class="line">	IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li>在图形界面设置系统代理时不要加上协议头”http://“</li>
-<li>即使设置了系统代理，一些软件也可能需要在软件内再设置代理。如果你发现浏览器能上网而命令行软件不能，那么你应该考虑配置软件内代理，或者对于sudo命令加上-E参数。</li>
-<li>无论是HTTP_PROXY,还是HTTPS_PROXY,都应该设置为”http://…”</li>
+<p>而<code>git stash pop</code>则会</p>
+<ol>
+<li>“储藏栈”栈顶的一次暂存和当前工作目录中文件合并</li>
+<li>然后删除储藏栈顶的暂存。</li>
 </ol>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]<a href="https://askubuntu.com/questions/830796/proxy-config-gui-vs-setting-http-proxy-in-etc-environment" target="_blank" rel="noopener">https://askubuntu.com/questions/830796/proxy-config-gui-vs-setting-http-proxy-in-etc-environment</a></p>
-<p>[2]<a href="https://stackoverflow.com/questions/8633461/how-to-keep-environment-variables-when-using-sudo" target="_blank" rel="noopener">https://stackoverflow.com/questions/8633461/how-to-keep-environment-variables-when-using-sudo</a></p>
-<p>[3]<a href="https://serverfault.com/questions/817680/https-through-an-http-only-proxy" target="_blank" rel="noopener">https://serverfault.com/questions/817680/https-through-an-http-only-proxy</a></p>
-<p>[4]<a href="https://unix.stackexchange.com/questions/190490/how-to-use-ssh-over-http-or-https" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/190490/how-to-use-ssh-over-http-or-https</a></p>
-<p>[5]<a href="https://blog.csdn.net/twilightdream/article/details/78260394" target="_blank" rel="noopener">https://blog.csdn.net/twilightdream/article/details/78260394</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]<a href="https://git-scm.com/book/zh/v2/Git-工具-储藏与清理" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-工具-储藏与清理</a></p>
 
       
     </div>
@@ -462,7 +451,7 @@
     <strong>Post author: </strong>ZHU Lei</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/" title="Make software work properly behind proxy">http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/</a>
+    <a href="http://leifzhu.github.io/2018/08/18/solve-an-error-caused-by-git-pull/" title="解决error:&ensp; Your local changes to the following files would be overwritten by merge">http://leifzhu.github.io/2018/08/18/solve-an-error-caused-by-git-pull/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -475,7 +464,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
+            <a href="/tags/git/" rel="tag"># git</a>
           
         </div>
       
@@ -488,14 +477,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/17/install-cntk-on-Ubuntu-18-04/" rel="next" title="Install cntk on Ubuntu 18.04">
+                <i class="fa fa-chevron-left"></i> Install cntk on Ubuntu 18.04
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/17/install-cntk-on-Ubuntu-18-04/" rel="prev" title="Install cntk on Ubuntu 18.04">
-                Install cntk on Ubuntu 18.04 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/19/Train-alexnet-on-imagenet-8-using-CNTK/" rel="prev" title="Train Alexnet on imagenet-8 using CNTK">
+                Train Alexnet on imagenet-8 using CNTK <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -674,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统代理"><span class="nav-number">1.</span> <span class="nav-text">系统代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过图形界面设置"><span class="nav-number">1.1.</span> <span class="nav-text">通过图形界面设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过命令行设置"><span class="nav-number">1.2.</span> <span class="nav-text">通过命令行设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于GUI和命令行设置代理的区别"><span class="nav-number">1.3.</span> <span class="nav-text">关于GUI和命令行设置代理的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不默认使用系统代理的软件"><span class="nav-number">2.</span> <span class="nav-text">不默认使用系统代理的软件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apt"><span class="nav-number">2.1.</span> <span class="nav-text">apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">2.2.</span> <span class="nav-text">git</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#checkout-丢弃本地所做的更改"><span class="nav-number">3.1.</span> <span class="nav-text">checkout:丢弃本地所做的更改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#commit-将修改提交到仓库"><span class="nav-number">3.2.</span> <span class="nav-text">commit: 将修改提交到仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stash-将当前的工作目录另存到储藏栈上"><span class="nav-number">3.3.</span> <span class="nav-text">stash: 将当前的工作目录另存到储藏栈上</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -853,9 +846,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/';
-        this.page.identifier = '2018/08/10/make-software-work-properly-behind-proxy/';
-        this.page.title = 'Make software work properly behind proxy';
+        this.page.url = 'http://leifzhu.github.io/2018/08/18/solve-an-error-caused-by-git-pull/';
+        this.page.identifier = '2018/08/18/solve-an-error-caused-by-git-pull/';
+        this.page.title = '解决error:&ensp; Your local changes to the following files would be overwritten by merge';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');

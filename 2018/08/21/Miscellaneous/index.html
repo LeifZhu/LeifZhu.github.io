@@ -106,27 +106,27 @@
 
 
 
-  <meta name="description" content="系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.">
-<meta name="keywords" content="linux">
+  <meta name="description" content="This post will be used to keep track of daily bugs, workaroud, solutions, collections,links and so on.">
+<meta name="keywords" content="linux,deep learning,git,apt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Make software work properly behind proxy">
-<meta property="og:url" content="http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/index.html">
+<meta property="og:title" content="Miscellaneous">
+<meta property="og:url" content="http://leifzhu.github.io/2018/08/21/Miscellaneous/index.html">
 <meta property="og:site_name" content="Leif&#39;s Blog">
-<meta property="og:description" content="系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.">
+<meta property="og:description" content="This post will be used to keep track of daily bugs, workaroud, solutions, collections,links and so on.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://leifzhu.github.io/images/system_proxy.png">
-<meta property="og:updated_time" content="2018-08-18T15:19:22.773Z">
+<meta property="og:image" content="http://leifzhu.github.io/2018/08/21/Miscellaneous/inode.png">
+<meta property="og:updated_time" content="2018-08-23T17:29:37.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Make software work properly behind proxy">
-<meta name="twitter:description" content="系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.">
-<meta name="twitter:image" content="http://leifzhu.github.io/images/system_proxy.png">
+<meta name="twitter:title" content="Miscellaneous">
+<meta name="twitter:description" content="This post will be used to keep track of daily bugs, workaroud, solutions, collections,links and so on.">
+<meta name="twitter:image" content="http://leifzhu.github.io/2018/08/21/Miscellaneous/inode.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/"/>
+  <link rel="canonical" href="http://leifzhu.github.io/2018/08/21/Miscellaneous/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Make software work properly behind proxy | Leif's Blog</title>
+  <title>Miscellaneous | Leif's Blog</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/">
+    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/08/21/Miscellaneous/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHU Lei">
@@ -349,7 +349,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Make software work properly behind proxy</h2>
+          <h2 class="post-title" itemprop="name headline">Miscellaneous</h2>
         
 
         <div class="post-meta">
@@ -361,7 +361,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T12:00:58+08:00">2018-08-10</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T22:17:45+08:00">2018-08-21</time>
             
 
             
@@ -371,6 +371,24 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/见得多了/" itemprop="url" rel="index"><span itemprop="name">见得多了</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -379,9 +397,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/10/make-software-work-properly-behind-proxy/#comments" itemprop="discussionUrl">
+                <a href="/2018/08/21/Miscellaneous/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/10/make-software-work-properly-behind-proxy/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/08/21/Miscellaneous/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,38 +427,49 @@
       
 
       
-        <p>系里的以太网访问互联网必须经过代理。然而我发现如果仅仅设置系统代理，一些命令(apt update, npm等)仍然无法建立连接，而需要单独设置。记录踩坑过程如下。我使用的系统是Ubuntu 18.04 LTS.<br><a id="more"></a></p>
-<h1 id="系统代理"><a href="#系统代理" class="headerlink" title="系统代理"></a>系统代理</h1><p>有一些软件（比如Chrome和Firefox, 命令行中的pip）会默认使用系统代理，也就是说，只要你正确设置了系统代理，这部分软件就能正常联网了。</p>
-<h2 id="通过图形界面设置"><a href="#通过图形界面设置" class="headerlink" title="通过图形界面设置"></a>通过图形界面设置</h2><p>前往Settings -&gt; Network -&gt; Network Proxy -&gt; Manual， 然后如下图所示</p>
-<p><img src="/images/system_proxy.png" alt=""></p>
-<p><strong>注意</strong>：填写的地址不要包含“http://”或”https://“字段,直接填写域名或ip.</p>
-<font size="1">(一定要皮一下加上？那好，在命令行下执行”echo $HTTP_PROXY”，看到了什么？在我测试的Ubuntu 18.04下此时仍然可以正常上网，但是一些命令行软件却无法建立互联网连接了) </font>
-
-<h2 id="通过命令行设置"><a href="#通过命令行设置" class="headerlink" title="通过命令行设置"></a>通过命令行设置</h2><p>当然，你也可以在命令行下修改，也就是HTTPS_PROXY和HTTP_PROXY加入环境变量。但是由于在图形界面添加的代理没有问题，我没有尝试。有点担心这样能否对对图形界面的程序（比如浏览器）生效。</p>
-<p><strong>注意</strong>：不管是HTTPS_PROXY还是HTTP_PROXY,都应该设置为”http://…”，如果你将HTTPS_PROXY设为”https://…”，有些软件就不能正常使用了，请参考<a href="https://serverfault.com/questions/817680/https-through-an-http-only-proxy" target="_blank" rel="noopener">[3]</a>。</p>
-<h2 id="关于GUI和命令行设置代理的区别"><a href="#关于GUI和命令行设置代理的区别" class="headerlink" title="关于GUI和命令行设置代理的区别"></a>关于GUI和命令行设置代理的区别</h2><p>一个非常有趣的现象是，当我通过GUI设置代理之后，尽管在终端中能通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $HTTP_PROXY</span><br><span class="line">echo $HTTPS_PROXY</span><br></pre></td></tr></table></figure></p>
-<p>查看代理环境变量，但是却无法在/etc/environment或者/etc/bash.bashrc或者/etc/.bashrc中发现关于这两个环境变量的记录。我原以为通过GUI设置就会将代理变量写入这些文件。<br><a href="https://askubuntu.com/questions/830796/proxy-config-gui-vs-setting-http-proxy-in-etc-environment" target="_blank" rel="noopener">[1]</a>中提到：</p>
-<ol>
-<li>如果在GUI设置时apply systme wide (我的Ubuntu 18.04没有该选项)，那么环境变量就会写入/etc/environment 和 /etc/apt/apt.conf， 否则代理变量只存放在gsettings database(就是GUI的数据库？)中。</li>
-<li>通过在.bashrc添加代理环境变量通过不会对图形界面程序生效。</li>
-</ol>
-<h1 id="不默认使用系统代理的软件"><a href="#不默认使用系统代理的软件" class="headerlink" title="不默认使用系统代理的软件"></a>不默认使用系统代理的软件</h1><h2 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h2><p>设置完系统代理后，sudo apt install命令可以正常联网安装软件了，奇怪的是sudo apt update 和 sudo apt add-apt-repository均无法建立互联网连接。一个快速的解决方式如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -E apt install sofware-name</span><br><span class="line">sudo -E apt add-apt-repository ppa:xx/yy</span><br></pre></td></tr></table></figure></p>
-<p>关于这么做的原理，可以参考<a href="https://stackoverflow.com/questions/8633461/how-to-keep-environment-variables-when-using-sudo" target="_blank" rel="noopener">[2]</a>，简单来说，sudo执行命令时默认不会保留当前用户的环境变量，而-E参数使得环境变量得以保留。（那么为啥不加-E参数时, sudo apt install没毛病呢? emmmmm, 我也不知道）</p>
-<p>当然也可以在apt内设置代理:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/apt.conf</span><br><span class="line"></span><br><span class="line">然后在apt.conf中添加下面两行并保存</span><br><span class="line">Acquire::http::proxy &quot;http://lgn:pwd@proxy_sever:proxy_port&quot;;</span><br><span class="line">Acquire::https::proxy &quot;http://lgn:pwd@proxy_sever:proxy_port&quot;;</span><br><span class="line">如果代理服务器不需要账户和密码则不需要lgn:pwd@字段。</span><br></pre></td></tr></table></figure></p>
-<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>系统代理设置完成后使用git克隆远程github仓库发现没有响应，使用的命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:LeifZhu/LeifZhu.github.io.git</span><br></pre></td></tr></table></figure></p>
-<p>因为这时使用的是ssh协议，穿不透代理。你可以选择换成clone with https，即执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/LeifZhu/LeifZhu.github.io.git</span><br></pre></td></tr></table></figure></p>
-<p>或者参考<a href="https://unix.stackexchange.com/questions/190490/how-to-use-ssh-over-http-or-https" target="_blank" rel="noopener">[4]</a>或者<a href="https://blog.csdn.net/twilightdream/article/details/78260394" target="_blank" rel="noopener">[5]</a>通过https支持ssh协议。以我的使用为例<br>先安装corkscrew<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install corkscrew</span><br></pre></td></tr></table></figure></p>
-<p>然后修改~/.ssh/config,添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">	User git</span><br><span class="line">	Hostname ssh.github.com</span><br><span class="line">	Port 443</span><br><span class="line">	ProxyCommand /usr/bin/corkscrew proxy.cse.cuhk.edu.hk 8000 %h %p</span><br><span class="line">	IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li>在图形界面设置系统代理时不要加上协议头”http://“</li>
-<li>即使设置了系统代理，一些软件也可能需要在软件内再设置代理。如果你发现浏览器能上网而命令行软件不能，那么你应该考虑配置软件内代理，或者对于sudo命令加上-E参数。</li>
-<li>无论是HTTP_PROXY,还是HTTPS_PROXY,都应该设置为”http://…”</li>
-</ol>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]<a href="https://askubuntu.com/questions/830796/proxy-config-gui-vs-setting-http-proxy-in-etc-environment" target="_blank" rel="noopener">https://askubuntu.com/questions/830796/proxy-config-gui-vs-setting-http-proxy-in-etc-environment</a></p>
-<p>[2]<a href="https://stackoverflow.com/questions/8633461/how-to-keep-environment-variables-when-using-sudo" target="_blank" rel="noopener">https://stackoverflow.com/questions/8633461/how-to-keep-environment-variables-when-using-sudo</a></p>
-<p>[3]<a href="https://serverfault.com/questions/817680/https-through-an-http-only-proxy" target="_blank" rel="noopener">https://serverfault.com/questions/817680/https-through-an-http-only-proxy</a></p>
-<p>[4]<a href="https://unix.stackexchange.com/questions/190490/how-to-use-ssh-over-http-or-https" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/190490/how-to-use-ssh-over-http-or-https</a></p>
-<p>[5]<a href="https://blog.csdn.net/twilightdream/article/details/78260394" target="_blank" rel="noopener">https://blog.csdn.net/twilightdream/article/details/78260394</a></p>
+        <p>This post will be used to keep track of daily bugs, workaroud, solutions, collections,links and so on.<br><a id="more"></a></p>
+<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><h3 id="inode"><a href="#inode" class="headerlink" title="inode"></a>inode</h3><p>两个很好的参考链接：</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/12/inode.html" target="_blank" rel="noopener">阮一峰的日志</a></li>
+<li><a href="http://cn.linux.vbird.org/linux_basic/0230filesystem.php" target="_blank" rel="noopener">鸟哥的linux私房菜</a></li>
+</ul>
+<p>概括：</p>
+<ul>
+<li>磁盘分为inode区和data block区，磁盘一经格式化就会少一部分空间，这部分空间被inode区占用。尽管<strong>分配时是按磁盘块比例分配</strong>的，在后续使用中实际上是<strong>一个inode对应一个文件，一个文件可能对应多个inode</strong>, 因既有可能出现inode用完而data block还有空余空间的情况(每个文件都太小，比如，只占一个block)，也有可能出现inode还剩很多，但data block已经装满的情况(每个文件都很大)。</li>
+<li>文件目录也是文件，它有inode，也有data blocks，它的data blocks里以[\&lt;inode> \&lt;filename>}]的格式记录该目录下文件名-&gt;inode号的映射</li>
+<li>inode里面除了data block的索引区块（分为直接索引，一次间址， 两次间址， 三次间址）外，还有一些文件的元信息，如权限，修改时间，大小等。<strong>用<code>stat &lt;filename&gt;</code>命令可以查看</strong>。</li>
+<li>对于目录，天生具有两个硬链接，一个在其父目录下，一个是本身下面的<code>.</code>，所以<strong>一个目录的links = 2 + “普通”子目录个数</strong>（“普通”的意思是不包含<code>.</code>和<code>..</code>）</li>
+<li>考虑到查找文件的性能，linux源码中规定<strong>一个目录下最多只能包含3200个子文件（考虑<code>.</code>和<code>..</code>还要减去2）</strong>，所以目录文件的大小并不能达到单个文件的理论最大值<a href="http://www.51testing.com/html/38/225738-236959.html" target="_blank" rel="noopener">（来源）</a></li>
+<li>一图胜千言。下图中的黄色表格是目录的data block</li>
+</ul>
+<img src="/2018/08/21/Miscellaneous/inode.png" title="文件查找">
+<h3 id="ubuntu-18-04-安装opencv"><a href="#ubuntu-18-04-安装opencv" class="headerlink" title="ubuntu 18.04 安装opencv"></a>ubuntu 18.04 安装opencv</h3><p>参考这个<a href="https://linuxconfig.org/install-opencv-on-ubuntu-18-04-bionic-beaver-linux" target="_blank" rel="noopener">链接</a><br>cntk依赖3.1版，这个目前会安装3.2版，一个workaround是创建软链接欺骗cntk。</p>
+<h3 id="xx-gt-dev-null-2-gt-amp-1-的意义"><a href="#xx-gt-dev-null-2-gt-amp-1-的意义" class="headerlink" title="xx &gt; /dev/null 2&gt;&amp;1 的意义"></a><code>xx &gt; /dev/null 2&gt;&amp;1</code> 的意义</h3><ul>
+<li>意义：将xx的STDOUT重定位到/dev/null(黑洞), STDERR重定位到STDOUT，总的来说就是把程序的任何输出都丢到黑洞。</li>
+<li>1前面为什么要加&amp;：如果不加，STDERR就会重定位到一个文件，文件名为’1’。加&amp;予以区分。<a href="https://www.xaprb.com/blog/2006/06/06/what-does-devnull-21-mean/" target="_blank" rel="noopener">(来源)</a></li>
+</ul>
+<h3 id="解决-libjpeg-so-8找不到"><a href="#解决-libjpeg-so-8找不到" class="headerlink" title="解决 libjpeg.so.8找不到"></a>解决 libjpeg.so.8找不到</h3><p>参考<a href="https://github.com/torch/image/issues/41" target="_blank" rel="noopener">这里</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.ijg.org/files/jpegsrc.v8d.tar.gz</span><br><span class="line">tar -xvf jpegsrc.v8d.tar.gz</span><br><span class="line">cd jpeg-8d/ </span><br><span class="line">sudo ./configure</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><h3 id="shell-tutorial"><a href="#shell-tutorial" class="headerlink" title="shell tutorial"></a>shell tutorial</h3><p><a href="http://www.runoob.com/linux/linux-shell.html" target="_blank" rel="noopener">中文</a></p>
+<p><a href="https://www.tutorialspoint.com/unix/" target="_blank" rel="noopener">英文</a></p>
+<h3 id="Syntax-error-Bad-for-loop-variable"><a href="#Syntax-error-Bad-for-loop-variable" class="headerlink" title="Syntax error: Bad for loop variable"></a>Syntax error: Bad for loop variable</h3><p>检查你是不是用sh执行脚本的？是的话换bash看看。sh不支持for循环。</p>
+<h3 id="bash脚本比较浮点数大小"><a href="#bash脚本比较浮点数大小" class="headerlink" title="bash脚本比较浮点数大小"></a>bash脚本比较浮点数大小</h3><p>bash本身只支持比较整数，要比较浮点数大小用下面的方式<a href="https://stackoverflow.com/questions/9939546/comparison-of-integer-and-floating-point-numbers-in-shell-script" target="_blank" rel="noopener">(来源)</a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ $(<span class="built_in">echo</span> <span class="string">"23.3 &gt; 7.3"</span> | bc) -ne 0 ] </span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"wassup"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>官方文档是坠吼的：<a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control" target="_blank" rel="noopener">English</a>-<a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">中文</a></p>
+<h3 id="gitignore快速教程"><a href="#gitignore快速教程" class="headerlink" title=".gitignore快速教程"></a>.gitignore快速教程</h3><p>一个例子,来自<a href="https://www.cnblogs.com/ShaYeBlog/p/5355951.html" target="_blank" rel="noopener">这里</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 此为注释 – 将被 Git 忽略</span><br><span class="line"> </span><br><span class="line">*.a       # 忽略所有 .a 结尾的文件</span><br><span class="line">!lib.a    # 但 lib.a 除外</span><br><span class="line">/TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span><br><span class="line">build/    # 忽略 build/ 目录下的所有文件</span><br><span class="line">doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span><br></pre></td></tr></table></figure></p>
+<h3 id="解决-gitignore不生效"><a href="#解决-gitignore不生效" class="headerlink" title="解决.gitignore不生效"></a>解决.gitignore不生效</h3><p>把暂存区缓存清除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;update .gitignore&apos;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="apt-apt-get"><a href="#apt-apt-get" class="headerlink" title="apt/apt-get"></a>apt/apt-get</h2><h3 id="add-apt-repository后apt-update报错"><a href="#add-apt-repository后apt-update报错" class="headerlink" title="add-apt-repository后apt update报错"></a>add-apt-repository后apt update报错</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E: The repository &apos;http://ppa.launchpad.net/gummi/gummi/ubuntu bionic Release&apos; does not have a Release file</span><br></pre></td></tr></table></figure>
+<p>解决方法在<a href="https://www.reddit.com/r/Ubuntu/comments/8gcja7/what_should_i_do_if_a_ppa_does_not_have_a_release/" target="_blank" rel="noopener">这里</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository --remove ppa:gummi/gummi</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install gummi</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Never add a PPA if you don’t have to.</p>
+</blockquote>
+<hr>
+<h2 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h2><h3 id="用Alexnet在cifar10上训练报错"><a href="#用Alexnet在cifar10上训练报错" class="headerlink" title="用Alexnet在cifar10上训练报错"></a>用Alexnet在cifar10上训练报错</h3><p>Alexnet的第一层的卷积核以及步长是多大？过完两层之后特征图还有多大？如果你一定要在cifar10上训练Alexnet, 要么在预处理时把图放大一下尺寸，要么修改Alexnet各层的卷积核和池化窗口大小。</p>
+<hr>
+<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><h3 id="tensoflow-low-level-api"><a href="#tensoflow-low-level-api" class="headerlink" title="tensoflow low level api"></a>tensoflow low level api</h3><p><a href="https://www.tensorflow.org/guide/low_level_intro" target="_blank" rel="noopener">click here</a></p>
+<p>有关tensorflow的一些基础概念以及低级的api都在这里。只使用高级api可能永远不知道模型里面发生了什么，还有就是有时候真的需要更低级的api，复杂意味着灵活，简单意味着死板。</p>
 
       
     </div>
@@ -462,7 +491,7 @@
     <strong>Post author: </strong>ZHU Lei</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/" title="Make software work properly behind proxy">http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/</a>
+    <a href="http://leifzhu.github.io/2018/08/21/Miscellaneous/" title="Miscellaneous">http://leifzhu.github.io/2018/08/21/Miscellaneous/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -477,6 +506,12 @@
           
             <a href="/tags/linux/" rel="tag"># linux</a>
           
+            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/apt/" rel="tag"># apt</a>
+          
         </div>
       
 
@@ -488,14 +523,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/" rel="next" title="obtain the loss value efficiently: don't do superfluous forward passes in training loop">
+                <i class="fa fa-chevron-left"></i> obtain the loss value efficiently: don't do superfluous forward passes in training loop
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/17/install-cntk-on-Ubuntu-18-04/" rel="prev" title="Install cntk on Ubuntu 18.04">
-                Install cntk on Ubuntu 18.04 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/24/usr-lib64-libstdc-so-6-version-CXXABI-1-3-8-not-found/" rel="prev" title="Solve "libstdc++.so.6:&ensp;version CXXABI_1.3.8 not found"">
+                Solve "libstdc++.so.6:&ensp;version CXXABI_1.3.8 not found" <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -674,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统代理"><span class="nav-number">1.</span> <span class="nav-text">系统代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过图形界面设置"><span class="nav-number">1.1.</span> <span class="nav-text">通过图形界面设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过命令行设置"><span class="nav-number">1.2.</span> <span class="nav-text">通过命令行设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于GUI和命令行设置代理的区别"><span class="nav-number">1.3.</span> <span class="nav-text">关于GUI和命令行设置代理的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不默认使用系统代理的软件"><span class="nav-number">2.</span> <span class="nav-text">不默认使用系统代理的软件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apt"><span class="nav-number">2.1.</span> <span class="nav-text">apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">2.2.</span> <span class="nav-text">git</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux"><span class="nav-number">1.</span> <span class="nav-text">linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inode"><span class="nav-number">1.1.</span> <span class="nav-text">inode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-18-04-安装opencv"><span class="nav-number">1.2.</span> <span class="nav-text">ubuntu 18.04 安装opencv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xx-gt-dev-null-2-gt-amp-1-的意义"><span class="nav-number">1.3.</span> <span class="nav-text">xx &gt; /dev/null 2&gt;&amp;1 的意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决-libjpeg-so-8找不到"><span class="nav-number">1.4.</span> <span class="nav-text">解决 libjpeg.so.8找不到</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell"><span class="nav-number">2.</span> <span class="nav-text">Shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell-tutorial"><span class="nav-number">2.1.</span> <span class="nav-text">shell tutorial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Syntax-error-Bad-for-loop-variable"><span class="nav-number">2.2.</span> <span class="nav-text">Syntax error: Bad for loop variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash脚本比较浮点数大小"><span class="nav-number">2.3.</span> <span class="nav-text">bash脚本比较浮点数大小</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">3.</span> <span class="nav-text">git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gitignore快速教程"><span class="nav-number">3.1.</span> <span class="nav-text">.gitignore快速教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决-gitignore不生效"><span class="nav-number">3.2.</span> <span class="nav-text">解决.gitignore不生效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apt-apt-get"><span class="nav-number">4.</span> <span class="nav-text">apt/apt-get</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-apt-repository后apt-update报错"><span class="nav-number">4.1.</span> <span class="nav-text">add-apt-repository后apt update报错</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度学习"><span class="nav-number">5.</span> <span class="nav-text">深度学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用Alexnet在cifar10上训练报错"><span class="nav-number">5.1.</span> <span class="nav-text">用Alexnet在cifar10上训练报错</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow"><span class="nav-number">6.</span> <span class="nav-text">Tensorflow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tensoflow-low-level-api"><span class="nav-number">6.1.</span> <span class="nav-text">tensoflow low level api</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -853,9 +892,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://leifzhu.github.io/2018/08/10/make-software-work-properly-behind-proxy/';
-        this.page.identifier = '2018/08/10/make-software-work-properly-behind-proxy/';
-        this.page.title = 'Make software work properly behind proxy';
+        this.page.url = 'http://leifzhu.github.io/2018/08/21/Miscellaneous/';
+        this.page.identifier = '2018/08/21/Miscellaneous/';
+        this.page.title = 'Miscellaneous';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
