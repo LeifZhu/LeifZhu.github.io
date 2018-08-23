@@ -31,6 +31,19 @@ cntk依赖3.1版，这个目前会安装3.2版，一个workaround是创建软链
 ### `xx > /dev/null 2>&1` 的意义
 * 意义：将xx的STDOUT重定位到/dev/null(黑洞), STDERR重定位到STDOUT，总的来说就是把程序的任何输出都丢到黑洞。
 * 1前面为什么要加&：如果不加，STDERR就会重定位到一个文件，文件名为'1'。加&予以区分。[(来源)](https://www.xaprb.com/blog/2006/06/06/what-does-devnull-21-mean/)
+
+### 解决 libjpeg.so.8找不到
+参考[这里](https://github.com/torch/image/issues/41)
+
+```
+wget http://www.ijg.org/files/jpegsrc.v8d.tar.gz
+tar -xvf jpegsrc.v8d.tar.gz
+cd jpeg-8d/ 
+sudo ./configure
+sudo make
+sudo make install
+```
+
 ---------------------------------
 ## Shell
 
