@@ -31,19 +31,6 @@ cntk依赖3.1版，这个目前会安装3.2版，一个workaround是创建软链
 ### `xx > /dev/null 2>&1` 的意义
 * 意义：将xx的STDOUT重定位到/dev/null(黑洞), STDERR重定位到STDOUT，总的来说就是把程序的任何输出都丢到黑洞。
 * 1前面为什么要加&：如果不加，STDERR就会重定位到一个文件，文件名为'1'。加&予以区分。[(来源)](https://www.xaprb.com/blog/2006/06/06/what-does-devnull-21-mean/)
-
-### 解决 libjpeg.so.8找不到
-参考[这里](https://github.com/torch/image/issues/41)
-
-```
-wget http://www.ijg.org/files/jpegsrc.v8d.tar.gz
-tar -xvf jpegsrc.v8d.tar.gz
-cd jpeg-8d/ 
-sudo ./configure
-sudo make
-sudo make install
-```
-
 ---------------------------------
 ## Shell
 
@@ -63,7 +50,13 @@ then
   echo "wassup"
 fi
 ```
+## bash脚本中的布尔表达式
+需要注意的是，bash脚本中的布尔表达式不会像C语言中一样被优化。这可能是引起下面错误的原因。
 
+```
+[: too many arguments
+[: unary operator expected
+```
 
 ---------------------------------
 ## git
@@ -119,3 +112,22 @@ Alexnet的第一层的卷积核以及步长是多大？过完两层之后特征�
 有关tensorflow的一些基础概念以及低级的api都在这里。只使用高级api可能永远不知道模型里面发生了什么，还有就是有时候真的需要更低级的api，复杂意味着灵活，简单意味着死板。
 
 
+## MXNet
+### 多机训练
+参考以下两个官方文档：
+
+[Large Scale Image Classification](https://mxnet.incubator.apache.org/tutorials/vision/large_scale_classification.html)
+
+[Distributed Training in MXNet](https://mxnet.incubator.apache.org/faq/distributed_training.html)
+
+### Trouble shooting
+多机训练时可能报错：
+
+```
+mxnet/src/io/iter_image_recordio_2.cc:318: Check failed: !overflow number of input images must be bigger than the batch size
+```
+出现这个问题的原因是验证集中\#example < \#worker * batch_size。解决方案：
+
+1. 用更小的batch_size
+2. 减少worker数量
+3. 在训练时禁用验证集
