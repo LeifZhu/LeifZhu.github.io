@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[Reading notes] Entity Matching with Active Monotone Classification]]></title>
+    <url>%2F2018%2F09%2F09%2FReading-notes-Entity-Matching-with-Active-Monotone-Classification%2F</url>
+    <content type="text"><![CDATA[This is a single-author work by Prof. Tao Yufei, awarded with PODS 2018 best paper. Prof. Tao gave us a seminar of his outstanding work on this Friday. In this seminar, he introduced (1) what the entity matching problem is; (2) how he formulates entity matching to a multidimensional classification problem; (3) his “small-and-sweet” algorithm to solve this problem and (4) some hints about his theoretical analysis. In this post, we focus on the first 3 points. The entity matching problemSuppose Amazon and ebay place a set of advertisements on their website respectively, we denote this two sets with $A$ and $E$. each advertisement has attributes like prod-name, prod-discription, year, price, and so on. Now we want wo know whether advertisements $x$ and $y$ are about the same product, for all $(x, y) \in A \times E$. Convert entity mathching to a multidimensional classification problemA “small-and-sweet” algorithm to solve the formulated problemMy thoughts]]></content>
+      <categories>
+        <category>学习一个</category>
+      </categories>
+      <tags>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Daily progress - 20180907]]></title>
+    <url>%2F2018%2F09%2F08%2FDaily-progress-20180907%2F</url>
+    <content type="text"><![CDATA[Tried to install FlexPS but meet a bunch of errors. Will continue installing next Monday with the help of Yuzhen. Attend a seminar by Prof. Yufei Tao, about his recent PODS best paper Entity Matching with Active Monotone Classification, benefit a lot from it. May give a post about the seminar this weekend. Read a paper, and posted reading notes “https://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/#more&quot; Some trivial things related to course selection, LOCPG registration, etc.]]></content>
+      <categories>
+        <category>历史进程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[[Reading Notes] Deep Extraction of Manga Structural Lines]]></title>
+    <url>%2F2018%2F09%2F07%2FReading-Notes-Deep-Extraction-of-Manga-Structural-Lines%2F</url>
+    <content type="text"><![CDATA[This is a work published on Tansaction on Graphics by Chengze Li et al. It aims to extract structural lines from pattern-rich manga. Its contributions are: (1)Novel CNN frame-work tailored for their extraction task; (2) An ingenious way of “reversely generating” data set, which well solved the requirement of demanding large amount of data by deep learning methods. (3) proposed some potential applications utilizing this work. Purposethe purpose can be intuitively presented by the cover picture of this paper: HighlightsComparison with related worksIn section 2, Related Works, The author classify existing methods to 3 categories (edge detection, texture removal and CNN-based techniques), then compare each catgory method with theirs to distinguish this work, so this part is clear and well-organized. Training data generationIn section 4.1, instead of manually tracing structural lines in screen patterns decorated mangas, they generate data set inversely, i.e. sythesizing screen-rich manga from the screen-free line drawings, by laying a rich library of screen patterns. To allign the real world distribution of patterns, they imposed some heuristic rules. CNN frame-work design In section 4.2, the authors presented the network design. Although it’s composed all by existing layers, they persuasivly illstrated why they design the network in this way why three levels of downsampling: experiments show that increasing levels filters away important structural components and leads to blurry structural lines, decreasing levels cannot filter away textural pattern due to limited receptive field. why use residual network(common sense): it allows direct information propagation between the input and output – easy training, better quality. why use convolutions/convolutions for downsampling/upsampling, instead of standard pooling/unpooling: max-pooling breaks spatial continuity. why use skipping (common sense): information at certain level in the downsampling network can be directly passed to the corresponding layer of upscaling network without compression. why use MSE instead of MAE as regularization: keep the tones of structural lines. Potential applicationsommitted. My thoughts Really no assumption? Does this method work when apply test on a picture with the screen patterns do not emerged in pattern library used to sythsize training data set? Especially I see on page 5, the paper mentions “At first glance, it seems…may not exist in real world.” which implies the sensitivity? Can it outperform GAN-based methods? e.g. pix2pix How to utilize the sparsity. Notice the sparsity (most of the pixels are filled with pure white) of structural line drawings, how can we utilize the property? Maybe an unevenly weighted(larger coefficients on false-positive terms) l2 regularization? Or define a structural MAE with 8-connected region (to avoid losing tone but keep sparse output)? Image to image translation can be regarded as a combination of CV and CG, the downscaling part is CV job, and upscaling part is for CG. Retrospect Some knowlege points Deconvolution (precisely, transposed convolution) Unpooling]]></content>
+      <categories>
+        <category>学习一个</category>
+      </categories>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>CG</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用bash脚本监控程序输出并自动执行任务]]></title>
     <url>%2F2018%2F09%2F02%2F%E4%BD%BF%E7%94%A8bash%E8%84%9A%E6%9C%AC%E7%9B%91%E6%8E%A7%E7%A8%8B%E5%BA%8F%E8%BE%93%E5%87%BA%E5%B9%B6%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[有时候我们需要执行这样的任务：当程序执行到一定的条件时就杀死进程，执行下一进程，这种“条件”通常是通过程序的输出来反馈的。我们不希望一直盯着屏幕来观察条件是否达到，用bash脚本来执行这种任务是一个明智的选择。 问题描述我要做的事情可以用下面的流程图描述。该任务的目标是检查不同的配置参数对训练运行速度的影响。 使用bash脚本监控程序运行bash脚本如下。思路是训练程序的输出重定向到文件mx_alexnet.log，然后每隔2秒用tail查看mx_alexnet.log的最后一行，检测loss的最新值, 如果达到target，就结束程序，然后重新开始。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485#!/bin/bashfunction run()&#123; interval=2 target=1.5 logfile=mx_alexnet.log # set knobs export MXNET_CPU_WORKER_NTHREADS=$1 export MXNET_CPU_PRIORITY_NTHREADS=$2 export MXNET_CPU_NNPACK_NTHREADS=$3 export MXNET_EXEC_ENABLE_INPLACE=$4 # start training python code/train_imagenet.py --network alexnet \ --num-classes 8 \ --data-train /root/zl_workspace/dataset/imagenet8/mxnet-format/train_rec.rec \ --data-val /root/zl_workspace/dataset/imagenet8/mxnet-format/val_rec.rec \ --num-examples 10400 \ --num-epochs 20 \ --loss 'ce' \ --disp-batches 1 \ --batch-size 256 \ --lr 0.01 \ --lr-step-epochs 5,10 \ &gt;$logfile 2&gt;&amp;1 &amp; # stat the time begin_time=$(date +%s) sleep 10 # monitor loss for((;;)) do tail -n1 $logfile loss=$(tail -n1 $logfile | sed -n 's/.*\scross-entropy=\([0-9]\+.[0-9]\+\)*/\1/p') if [ -n "$loss" ] then if [ $(echo "$&#123;loss&#125; &lt; $&#123;target&#125;" | bc) -eq 1 ] then break else sleep $interval fi else sleep $interval fi done # record the time of runnig end_time=$(date +%s) run_time=$((end_time - begin_time)) echo "$1, $2, $3, $4, $run_time" &gt;&gt; "$5" echo "training finshed! Cost $&#123;run_time&#125; s." # kill the process ps aux | grep "python code/train_imagenet.py" | grep -v "grep" | awk &#123;'print $2'&#125; | xargs kill echo "killed process successfully!" rm -f $logfile echo "finished removal successfully!"&#125;# make sure the training is not going currentlyps aux | grep "python code/train_imagenet.py" | grep -v "grep" | awk &#123;'print $2'&#125; | xargs kill# create a file to record running timerfile=results.csvtouch $rfileecho "mcwn, mcpn, mcnn, meei, run_time" &gt; $rfilefor mcwn in 1 2 4 8; do for mcpn in 4 1 2 8; do for mcnn in 4 1 2 8; do for meei in true false; do if [ $(($mcwn + $mcpn + $mcnn)) -le 16 ] then run $mcwn $mcpn $mcnn $meei $rfile echo "waiting for restart..." sleep 10 fi done done donedone 几个细节bash中比较浮点数的大小bash本身是只支持比较整数的大小，要比较浮点数大小需要借助程序bc，所以上面中的代码中检测loss值用的是12if [ $(echo "$&#123;loss&#125; &lt; $&#123;target&#125;" | bc) -eq 1 ] ... 而不是1if [ $&#123;loss&#125; &lt; $&#123;target&#125; ] 详情请 在terminal下man bc。 bash中的复合逻辑表达式注意脚本中的这一段1234567891011if [ -n "$loss" ] then if [ $(echo "$&#123;loss&#125; &lt; $&#123;target&#125;" | bc) -eq 1 ] then break else sleep $interval fielse sleep $intervalfi 为什么不写成下面这样？123456if [ -n "$loss" -a $(echo "$&#123;loss&#125; &lt; $&#123;target&#125;" | bc) -eq 1 ]then breakelse sleep $intervalfi 因为bash脚本中的复合逻辑表达式不像C语言中那样会被优化，当正则表达式没有匹配到值而使loss为空时，尽管-n &quot;$loss&quot;为真，-a后面的 $(echo &quot;${loss} &lt; ${target}&quot; | bc) -eq 1仍然会执行，然后就会报错。 bash script教程及几个常用的命令bash教程：中文-英文 本文中涉及的几个常用的命令 sed: here grep: here awk: here xargs: 教程[1] - 教程[2]]]></content>
+      <categories>
+        <category>人生经验</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>bash</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Solve "libstdc++.so.6:&ensp;version CXXABI_1.3.8 not found"]]></title>
@@ -25,8 +63,8 @@
         <category>见得多了</category>
       </categories>
       <tags>
-        <tag>linux</tag>
         <tag>deep learning</tag>
+        <tag>linux</tag>
         <tag>git</tag>
         <tag>apt</tag>
       </tags>

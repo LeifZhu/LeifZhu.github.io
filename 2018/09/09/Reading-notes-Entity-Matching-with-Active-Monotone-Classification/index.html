@@ -106,28 +106,25 @@
 
 
 
-  <meta name="description" content="在利用Tensorflow或CNTK训练DNN的时候，我们可能需要在一次迭代后获得当前的loss或者其他metric。一种常见的方式是：通过一次forward pass计算loss(比如tensorflow的loss.eval())。但是这样带来的额外消耗是没有必要的，因为在训练过程中已经进行过forward pass。">
-<meta name="keywords" content="deep learning">
+  <meta name="description" content="This is a single-author work by Prof. Tao Yufei, awarded with PODS 2018 best paper. Prof. Tao gave us a seminar of his outstanding work on this Friday. In this seminar, he introduced (1) what the enti">
+<meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="obtain the loss value efficiently: don&#39;t do superfluous forward passes in training loop">
-<meta property="og:url" content="http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/index.html">
+<meta property="og:title" content="[Reading notes] Entity Matching with Active Monotone Classification">
+<meta property="og:url" content="http://leifzhu.github.io/2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/index.html">
 <meta property="og:site_name" content="Leif&#39;s Blog">
-<meta property="og:description" content="在利用Tensorflow或CNTK训练DNN的时候，我们可能需要在一次迭代后获得当前的loss或者其他metric。一种常见的方式是：通过一次forward pass计算loss(比如tensorflow的loss.eval())。但是这样带来的额外消耗是没有必要的，因为在训练过程中已经进行过forward pass。">
+<meta property="og:description" content="This is a single-author work by Prof. Tao Yufei, awarded with PODS 2018 best paper. Prof. Tao gave us a seminar of his outstanding work on this Friday. In this seminar, he introduced (1) what the enti">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/api.png">
-<meta property="og:image" content="http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/run_time.png">
-<meta property="og:updated_time" content="2018-08-23T16:08:12.714Z">
+<meta property="og:updated_time" content="2018-09-09T16:24:47.866Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="obtain the loss value efficiently: don&#39;t do superfluous forward passes in training loop">
-<meta name="twitter:description" content="在利用Tensorflow或CNTK训练DNN的时候，我们可能需要在一次迭代后获得当前的loss或者其他metric。一种常见的方式是：通过一次forward pass计算loss(比如tensorflow的loss.eval())。但是这样带来的额外消耗是没有必要的，因为在训练过程中已经进行过forward pass。">
-<meta name="twitter:image" content="http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/api.png">
+<meta name="twitter:title" content="[Reading notes] Entity Matching with Active Monotone Classification">
+<meta name="twitter:description" content="This is a single-author work by Prof. Tao Yufei, awarded with PODS 2018 best paper. Prof. Tao gave us a seminar of his outstanding work on this Friday. In this seminar, he introduced (1) what the enti">
 
 
 
 
 
 
-  <link rel="canonical" href="http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/"/>
+  <link rel="canonical" href="http://leifzhu.github.io/2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/"/>
 
 
 
@@ -137,7 +134,7 @@
   };
 </script>
 
-  <title>obtain the loss value efficiently: don't do superfluous forward passes in training loop | Leif's Blog</title>
+  <title>[Reading notes] Entity Matching with Active Monotone Classification | Leif's Blog</title>
   
 
 
@@ -364,7 +361,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/">
+    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHU Lei">
@@ -381,7 +378,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">obtain the loss value efficiently: don't do superfluous forward passes in training loop</h2>
+          <h2 class="post-title" itemprop="name headline">[Reading notes] Entity Matching with Active Monotone Classification</h2>
         
 
         <div class="post-meta">
@@ -393,7 +390,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T14:50:40+08:00">2018-08-21</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-09T16:45:01+08:00">2018-09-09</time>
             
 
             
@@ -414,7 +411,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/人生经验/" itemprop="url" rel="index"><span itemprop="name">人生经验</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习一个/" itemprop="url" rel="index"><span itemprop="name">学习一个</span></a></span>
 
                 
                 
@@ -429,9 +426,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/#comments" itemprop="discussionUrl">
+                <a href="/2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -459,27 +456,9 @@
       
 
       
-        <p>在利用Tensorflow或CNTK训练DNN的时候，我们可能需要在一次迭代后获得当前的loss或者其他metric。一种常见的方式是：通过一次forward pass计算loss(比如tensorflow的loss.eval())。但是这样带来的额外消耗是没有必要的，因为在训练过程中已经进行过forward pass。<br><a id="more"></a></p>
-<h2 id="在迭代完成后打印当前的损失值"><a href="#在迭代完成后打印当前的损失值" class="headerlink" title="在迭代完成后打印当前的损失值"></a>在迭代完成后打印当前的损失值</h2><p>我有一份用CNTK实现的DNN，它的training loop长这样<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">ce = C.cross_entropy_with_softmax(z, label_var)</span><br><span class="line">pe = C.classification_error(z, label_var)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"><span class="comment"># training toop</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">1</span>, max_epochs+<span class="number">1</span>):</span><br><span class="line">  sample_count = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span> sample_count &lt; epoch_size:</span><br><span class="line">      data = reader_train.next_minibatch(min(minibatch_size, epoch_size - sample_count),</span><br><span class="line">                                          input_map=input_map)</span><br><span class="line">      trainer.train_minibatch(data)</span><br><span class="line">      sample_count += data[label_var].num_samples</span><br><span class="line">  trainer.summarize_training_progress()</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>但是我希望每完成一个mini batch的训练我都能及时获得当前的loss，因为我希望：</p>
-<ol>
-<li>能够在每次迭代后打印当前的loss值</li>
-<li>当loss达到某个给定的target_loss的时候就停止训练</li>
-</ol>
-<p>一种很自然的想法就是像下面这样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">ce = C.cross_entropy_with_softmax(z, label_var)</span><br><span class="line">pe = C.classification_error(z, label_var)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"><span class="comment"># training toop</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">1</span>, max_epochs+<span class="number">1</span>):</span><br><span class="line">  sample_count = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span> sample_count &lt; epoch_size:</span><br><span class="line">      data = reader_train.next_minibatch(min(minibatch_size, epoch_size - sample_count),</span><br><span class="line">                                          input_map=input_map)</span><br><span class="line">      trainer.train_minibatch(data)</span><br><span class="line">--&gt;   curr_loss = np.asscalar(np.mean(ce.eval(data)))</span><br><span class="line">--&gt;   print("current loss: %f" % (curr_loss))</span><br><span class="line">      sample_count += data[label_var].num_samples</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>然而我发现这样会拖慢迭代的速度，在加上这两行之前，训练一个256个examples的mini batch大约是13s， 加上后则需要17~18s，显然问题出在<code>curr_loss = np.asscalar(np.mean(ce.eval(data)))</code>这里，进行一次forward pass还是挺耗时的。</p>
-<h2 id="正确的方式"><a href="#正确的方式" class="headerlink" title="正确的方式"></a>正确的方式</h2><p>我们知道在<code>trainer.train_minibatch(data)</code>中是进行过forward pass的，那么看看<code>trainer.train_minibatch()</code>有没有提供这样的接口，从<a href="https://www.cntk.ai/pythondocs/cntk.train.trainer.html" target="_blank" rel="noopener">API文档[1]</a>中我们可以看到：</p>
-<img src="/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/api.png" title="cntk.trainer.train_minibatch api">
-<p>注意红色方框标记的内容。简单地说，反正可以通过传入outputs参数输出制定的令<code>trainer.train_minibatch()</code>以字典的方式返回请求获取的值。最终代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">ce = C.cross_entropy_with_softmax(z, label_var)</span><br><span class="line">pe = C.classification_error(z, label_var)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"><span class="comment"># train loop</span></span><br><span class="line">finished = <span class="keyword">False</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">1</span>, max_epochs+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> finished:</span><br><span class="line">        logging.info(<span class="string">"Training finished!"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    sample_count = <span class="number">0</span></span><br><span class="line">    batch_cnt = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> sample_count &lt; epoch_size:</span><br><span class="line">        batch_begin_time = time.time()</span><br><span class="line">        data = reader_train.next_minibatch(min(minibatch_size, epoch_size - sample_count),</span><br><span class="line">                                            input_map=input_map)</span><br><span class="line">--&gt;     _, dict_out = trainer.train_minibatch(data, outputs=[ce, pe])</span><br><span class="line">--&gt;     curr_loss = np.asscalar(np.mean(dict_out[ce]))</span><br><span class="line">--&gt;     curr_err_rate = np.asscalar(np.mean(dict_out[pe]))</span><br><span class="line">        logging.info(<span class="string">"epoch[%d of %d] - batch[%d] - training loss=%f - training err_rate = %f %% - %f exampls/s"</span>%</span><br><span class="line">                      (epoch, max_epochs, batch_cnt, curr_loss, curr_err_rate*<span class="number">100</span>,</span><br><span class="line">                      data[label_var].num_samples/(time.time()-batch_begin_time)</span><br><span class="line">                      )</span><br><span class="line">                      )</span><br><span class="line">        sample_count += data[label_var].num_samples</span><br><span class="line">        batch_cnt += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> curr_loss &lt; target_loss:</span><br><span class="line">            finished = <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>这样更改之后，我实现了打印loss和用loss控制训练结束，并且训练速度恢复到了约13 s/batch。</p>
-<p><strong>注意</strong> : outputs参数需要传入一个iterable的对象，因此即使你只希望取loss一个值，也应该使用<code>trainer.train_minibatch(data, outputs=[loss])</code>而不是<code>trainer.train_minibatch(data, outputs=loss)</code></p>
-<h2 id="Tensorflow中该如何做"><a href="#Tensorflow中该如何做" class="headerlink" title="Tensorflow中该如何做"></a>Tensorflow中该如何做</h2><p>同样的问题，在tensorflow中你应该使用<a href="https://stackoverflow.com/questions/33833818/printing-the-loss-during-tensorflow-training" target="_blank" rel="noopener">[2]</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    cross_entropy = -tf.reduce_sum(y_ * tf.log(y))</span><br><span class="line">    _, loss_val = sess.run([train_step, cross_entropy],</span><br><span class="line">                           feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'loss = '</span> + loss_val</span><br></pre></td></tr></table></figure>
-<p>而不是<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    cross_entropy = -tf.reduce_sum(y_ * tf.log(y))</span><br><span class="line">    sess.run(train_step,</span><br><span class="line">             feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line">    loss_val = sess.run(cross_entropy)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'loss = '</span> + loss_val</span><br></pre></td></tr></table></figure></p>
-<p>下面的例子可以看出两种方式运行时间的差别<br><img src="/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/run_time.png" title="运行时间对比"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]<a href="https://www.cntk.ai/pythondocs/cntk.train.trainer.html" target="_blank" rel="noopener">https://www.cntk.ai/pythondocs/cntk.train.trainer.html</a></p>
-<p>[2] <a href="https://stackoverflow.com/questions/33833818/printing-the-loss-during-tensorflow-training" target="_blank" rel="noopener">https://stackoverflow.com/questions/33833818/printing-the-loss-during-tensorflow-training</a></p>
-
+        <p><a href="https://dl.acm.org/citation.cfm?id=3196984" target="_blank" rel="noopener">This</a> is a single-author work by Prof. <a href="http://www.cse.cuhk.edu.hk/~taoyf/" target="_blank" rel="noopener">Tao Yufei</a>, awarded with PODS 2018 best paper. Prof. Tao gave us a seminar of his outstanding work on this Friday. In this seminar, he introduced (1) what the entity matching problem is; (2) how he formulates entity matching to a multidimensional classification problem; (3) his “small-and-sweet” algorithm to solve this problem and (4) some hints about his theoretical analysis. In this post, we focus on the first 3 points.<br><a id="more"></a></p>
+<h2 id="The-entity-matching-problem"><a href="#The-entity-matching-problem" class="headerlink" title="The entity matching problem"></a>The entity matching problem</h2><p>Suppose Amazon and ebay place a set of advertisements on their website respectively, we denote this two sets with $A$ and $E$. each advertisement has attributes like <em>prod-name</em>, <em>prod-discription</em>, <em>year</em>, <em>price</em>, and so on. Now we want wo know whether advertisements $x$ and $y$ are about the same product, for all $(x, y) \in  A \times E$.</p>
+<h2 id="Convert-entity-mathching-to-a-multidimensional-classification-problem"><a href="#Convert-entity-mathching-to-a-multidimensional-classification-problem" class="headerlink" title="Convert entity mathching to a multidimensional classification problem"></a>Convert entity mathching to a multidimensional classification problem</h2><h2 id="A-“small-and-sweet”-algorithm-to-solve-the-formulated-problem"><a href="#A-“small-and-sweet”-algorithm-to-solve-the-formulated-problem" class="headerlink" title="A “small-and-sweet” algorithm to solve the formulated problem"></a>A “small-and-sweet” algorithm to solve the formulated problem</h2><h2 id="My-thoughts"><a href="#My-thoughts" class="headerlink" title="My thoughts"></a>My thoughts</h2>
       
     </div>
 
@@ -500,7 +479,7 @@
     <strong>Post author: </strong>ZHU Lei</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/" title="obtain the loss value efficiently: don't do superfluous forward passes in training loop">http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/</a>
+    <a href="http://leifzhu.github.io/2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/" title="[Reading notes] Entity Matching with Active Monotone Classification">http://leifzhu.github.io/2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -513,7 +492,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
           
         </div>
       
@@ -526,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/19/Train-alexnet-on-imagenet-8-using-CNTK/" rel="next" title="Train Alexnet on imagenet-8 using CNTK">
-                <i class="fa fa-chevron-left"></i> Train Alexnet on imagenet-8 using CNTK
+              <a href="/2018/09/08/Daily-progress-20180907/" rel="next" title="Daily progress - 20180907">
+                <i class="fa fa-chevron-left"></i> Daily progress - 20180907
               </a>
             
           </div>
@@ -535,10 +514,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/21/Miscellaneous/" rel="prev" title="Miscellaneous">
-                Miscellaneous <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -726,7 +701,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在迭代完成后打印当前的损失值"><span class="nav-number">1.</span> <span class="nav-text">在迭代完成后打印当前的损失值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正确的方式"><span class="nav-number">2.</span> <span class="nav-text">正确的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow中该如何做"><span class="nav-number">3.</span> <span class="nav-text">Tensorflow中该如何做</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-entity-matching-problem"><span class="nav-number">1.</span> <span class="nav-text">The entity matching problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convert-entity-mathching-to-a-multidimensional-classification-problem"><span class="nav-number">2.</span> <span class="nav-text">Convert entity mathching to a multidimensional classification problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-“small-and-sweet”-algorithm-to-solve-the-formulated-problem"><span class="nav-number">3.</span> <span class="nav-text">A “small-and-sweet” algorithm to solve the formulated problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-thoughts"><span class="nav-number">4.</span> <span class="nav-text">My thoughts</span></a></li></ol></div>
             
 
           </div>
@@ -905,9 +880,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://leifzhu.github.io/2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/';
-        this.page.identifier = '2018/08/21/obtain-the-loss-value-efficiently-don-t-do-superfluous-forward-passes-in-training-loop/';
-        this.page.title = 'obtain the loss value efficiently: don\'t do superfluous forward passes in training loop';
+        this.page.url = 'http://leifzhu.github.io/2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/';
+        this.page.identifier = '2018/09/09/Reading-notes-Entity-Matching-with-Active-Monotone-Classification/';
+        this.page.title = '[Reading notes] Entity Matching with Active Monotone Classification';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
