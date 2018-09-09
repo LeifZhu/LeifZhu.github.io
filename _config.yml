@@ -95,3 +95,11 @@ deploy:
 #  ignore_hidden: false
 #  ignore_pattern:
 #      public: .
+
+# math support
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    # src: custom_mathjax_source
+    config:
+      # MathJax config
