@@ -17,3 +17,12 @@ Suppose Amazon and ebay place a set of advertisements on their website respectiv
 
 
 ## My thoughts
+1. The process of problem formulation introduced in this paper is quite instructive. The framework to deal with matching problem can be transferred to many other problems...
+
+2. As the title of the paper implies, it's an active learning algorithm, which require less labeling job for training set than supervised leanrning, and can be done interactively. However, it's a monotone classifier, which means there is a trade off: the algorithm will perform perfectly (zero error) if the data set is strictly monotone, but if the data set has undesired pattern, the classification can be terrible. An extreme case can be shown as the following picture. In short, it has strong assumption for data, and not stable. If we have enough labeled data, or the labeling job is cheap, we should still choose descision tree or some other classifier.
+
+(a naughty spy point dive deeply into its opposite group, and unfortunately be chosen by the algorithm)
+
+(give a table of comparison with decision tree and SVM)
+
+3. how to solve the problem in 2? Careful feature engineering? Run several times and do ensemble? or?
