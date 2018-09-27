@@ -49,7 +49,7 @@ cudnn全称是CUDA Deep Neural Network library，顾名思义，这是一个**�
 参看stackoverflow上的[这个问题](https://stackoverflow.com/questions/34497099/opencv-undefined-reference-to-imread).
 
 
-顺便一提一个找解决方法时发现的一个很好用的工具[pkg-config](https://zh.wikipedia.org/wiki/Pkg-config), 使用示例：
+顺便一提找解决方法时发现的一个很好用的工具[pkg-config](https://zh.wikipedia.org/wiki/Pkg-config), 使用示例：
 
 ```bash
 leizhu@pc-office:~/git_repo/cs344/Problem Sets/Problem Set 1$ pkg-config --libs opencv
