@@ -17,5 +17,7 @@ In this post, I exhibit some my preferred quotes or my own writings about life, 
 ## research
 1. Think twice, code once.
 2. Research means heuristic search, not exhaustive search.
+3. I don't mind push, if it nudges me in the right direction. Actually, I appreciate it.
+4. "right direction" doesn't necessarily mean "leading to success", but must be not stupid.
 
 To be continued...
