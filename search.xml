@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[cuda编程入门]]></title>
+    <url>%2F2018%2F09%2F27%2Fcuda%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[最近在学习cuda，这里po出我使用的资料和遇到的问题。 cuda是什么CUDA的定义CUDA的全称是Compute Unified Device Architecture，统一计算架构。以下内容摘自官方博客 Most people confuse CUDA for a language or maybe an API. It is not.It’s more than that. CUDA is a parallel computing platform and programming model that makes using a GPU for general purpose computing simple and elegant. The developer still programs in the familiar C, C++, Fortran, or an ever expanding list of supported languages, and incorporates extensions of these languages in the form of a few basic keywords. 意思是CUDA不是一门语言（你仍然使用（扩展了的）C/C++, Fortran以及其语言编程），也不是API，而是一个并行编程平台和一种编程模型，它使得用GPU来做通用计算简单优雅。下面的这张图来自CS344课程，我觉得比较形象地解释了CUDA的编程模型： cuda与cuDNN的关系cudnn全称是CUDA Deep Neural Network library，顾名思义，这是一个基于cuda的为深度神经网络优化的库。所以cuda比cuDNN更基础，更底层。 cuda安装我是通过runfile安装的，下载地址在这里。我在安装过程中主要参考了下面两个材料: 官方文档(英文版) 一篇博客(中文版) 上面的博客大部分是官方文档的翻译，也包括一些作者的总结。我按官方文档执行了Pre-installation Actions和Deisabling Nauveou，然后执行runfile， 接着就成功编译了示例代码。这期间出现了一些library缺失的问题，谷歌一下能很快解决。 根据我的安装过程来看，最重要的一步是禁用Nauveou然后重启linux继续安装。 学习cuda编程主要参考资料: Intro to Parallel Programming课程的slide和代码练习可以在github上找到: Udacity CS344 Problem shooting为什么cudaMalloc中第一个参数是void**类型，而不是单指针？提示：传值？传引用？这个链接中teju给出了很好的回答(5楼)。 cmake编译cuda?参考这里. 编译时遇到错误:undefined reference to `cv::imread(cv::String const&amp;, int)’跟安装的opencv版本有关, opencv3的接口有所改变，opencv3中将imread的实现放到了libopencv_imgcodecs模块中，因此编译时应该加上-lopencv_imgcodecs。参看stackoverflow上的这个问题. 顺便一提找解决方法时发现的一个很好用的工具pkg-config, 使用示例： 123456leizhu@pc-office:~/git_repo/cs344/Problem Sets/Problem Set 1$ pkg-config --libs opencv-lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_videostab -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_datasets -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hdf -lopencv_line_descriptor -lopencv_optflow -lopencv_video -lopencv_plot -lopencv_reg -lopencv_saliency -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_rgbd -lopencv_viz -lopencv_surface_matching -lopencv_text -lopencv_ximgproc -lopencv_calib3d -lopencv_features2d -lopencv_flann -lopencv_xobjdetect -lopencv_objdetect -lopencv_ml -lopencv_xphoto -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_photo -lopencv_imgproc -lopencv_coreleizhu@pc-office:~/git_repo/cs344/Problem Sets/Problem Set 1$ pkg-config --cflags opencv-I/usr/include/opencvleizhu@pc-office:~/git_repo/cs344/Problem Sets/Problem Set 1$ pkg-config --modversion opencv3.2.0]]></content>
+      <categories>
+        <category>历史进程</category>
+      </categories>
+      <tags>
+        <tag>cuda</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[My favorite quotes & writings]]></title>
     <url>%2F2018%2F09%2F10%2FMy-favorite-quotes%2F</url>
     <content type="text"><![CDATA[In this post, I exhibit some my preferred quotes or my own writings about life, study, research, etc. life Better safe than sorry. Better late than never. 重剑无锋，大巧不工。 Stay hungry, stay foolish. Stay simple, stay young. :) research Think twice, code once. Research means heuristic search, not exhaustive search. To be continued…]]></content>

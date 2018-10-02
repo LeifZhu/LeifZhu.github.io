@@ -106,29 +106,27 @@
 
 
 
-  <meta name="description" content="This is a work published on Tansaction on Graphics by Chengze Li et al. It aims to extract structural lines from pattern-rich manga. Its contributions are: (1)Novel CNN frame-work tailored for their e">
-<meta name="keywords" content="deep learning,CG">
+  <meta name="description" content="最近在学习cuda，这里po出我使用的资料和遇到的问题。">
+<meta name="keywords" content="cuda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Reading Notes] Deep Extraction of Manga Structural Lines">
-<meta property="og:url" content="http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/index.html">
+<meta property="og:title" content="cuda编程入门">
+<meta property="og:url" content="http://leifzhu.github.io/2018/09/27/cuda编程入门/index.html">
 <meta property="og:site_name" content="Leif&#39;s Blog">
-<meta property="og:description" content="This is a work published on Tansaction on Graphics by Chengze Li et al. It aims to extract structural lines from pattern-rich manga. Its contributions are: (1)Novel CNN frame-work tailored for their e">
+<meta property="og:description" content="最近在学习cuda，这里po出我使用的资料和遇到的问题。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/cover_photo.png">
-<meta property="og:image" content="http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/dataset.png">
-<meta property="og:image" content="http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/network.png">
-<meta property="og:updated_time" content="2018-09-09T16:24:47.855Z">
+<meta property="og:image" content="http://leifzhu.github.io/2018/09/27/cuda编程入门/cuda.png">
+<meta property="og:updated_time" content="2018-10-02T15:52:51.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Reading Notes] Deep Extraction of Manga Structural Lines">
-<meta name="twitter:description" content="This is a work published on Tansaction on Graphics by Chengze Li et al. It aims to extract structural lines from pattern-rich manga. Its contributions are: (1)Novel CNN frame-work tailored for their e">
-<meta name="twitter:image" content="http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/cover_photo.png">
+<meta name="twitter:title" content="cuda编程入门">
+<meta name="twitter:description" content="最近在学习cuda，这里po出我使用的资料和遇到的问题。">
+<meta name="twitter:image" content="http://leifzhu.github.io/2018/09/27/cuda编程入门/cuda.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/"/>
+  <link rel="canonical" href="http://leifzhu.github.io/2018/09/27/cuda编程入门/"/>
 
 
 
@@ -138,7 +136,7 @@
   };
 </script>
 
-  <title>[Reading Notes] Deep Extraction of Manga Structural Lines | Leif's Blog</title>
+  <title>cuda编程入门 | Leif's Blog</title>
   
 
 
@@ -365,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/">
+    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/09/27/cuda编程入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHU Lei">
@@ -382,7 +380,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">[Reading Notes] Deep Extraction of Manga Structural Lines</h2>
+          <h2 class="post-title" itemprop="name headline">cuda编程入门</h2>
         
 
         <div class="post-meta">
@@ -394,7 +392,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-07T20:10:07+08:00">2018-09-07</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-27T22:06:51+08:00">2018-09-27</time>
             
 
             
@@ -415,7 +413,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习一个/" itemprop="url" rel="index"><span itemprop="name">学习一个</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/历史进程/" itemprop="url" rel="index"><span itemprop="name">历史进程</span></a></span>
 
                 
                 
@@ -430,9 +428,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/#comments" itemprop="discussionUrl">
+                <a href="/2018/09/27/cuda编程入门/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/09/27/cuda编程入门/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -460,38 +458,26 @@
       
 
       
-        <p><a href="http://delivery.acm.org/10.1145/3080000/3073675/a117-li.pdf?ip=137.189.90.241&amp;id=3073675&amp;acc=ACTIVE%20SERVICE&amp;key=CDD1E79C27AC4E65%2E63D3CA449C1BD759%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&amp;__acm__=1536341127_445dc05cd8d2a0df2cb4df34421b6d4a" target="_blank" rel="noopener">This</a> is a work published on Tansaction on Graphics by Chengze Li et al. It aims to extract structural lines from pattern-rich manga. Its contributions are: (1)Novel CNN frame-work tailored for their extraction task; (2) An ingenious way of “reversely generating” data set, which well solved the requirement of demanding large amount of data by deep learning methods. (3) proposed some potential applications utilizing this work.</p>
-<a id="more"></a>
-<h2 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h2><p>the purpose can be intuitively presented by the cover picture of this paper:</p>
-<img src="/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/cover_photo.png" title="cover photo">
-<h2 id="Highlights"><a href="#Highlights" class="headerlink" title="Highlights"></a>Highlights</h2><h3 id="Comparison-with-related-works"><a href="#Comparison-with-related-works" class="headerlink" title="Comparison with related works"></a>Comparison with related works</h3><p>In section 2, Related Works, The author classify existing methods to 3 categories (edge detection, texture removal and CNN-based techniques), then compare each catgory method with theirs to distinguish this work, so this part is clear and well-organized.</p>
-<h3 id="Training-data-generation"><a href="#Training-data-generation" class="headerlink" title="Training data generation"></a>Training data generation</h3><p>In section 4.1, instead of manually tracing structural lines in screen patterns decorated mangas, they generate data set inversely, i.e. sythesizing screen-rich manga from the screen-free line drawings, by laying a rich library of screen patterns.</p>
-<img src="/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/dataset.png" title="dataset sythsizing">
-<p>To allign the real world distribution of patterns, they imposed some heuristic rules. </p>
-<h3 id="CNN-frame-work-design"><a href="#CNN-frame-work-design" class="headerlink" title="CNN frame-work design"></a>CNN frame-work design</h3><img src="/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/network.png" title="network structure">
-<p>In section 4.2, the authors presented the network design. Although it’s composed all by existing layers, they persuasivly illstrated why they design the network in this way</p>
-<ol>
-<li>why three levels of downsampling: experiments show that increasing levels filters away important structural components and leads to blurry structural lines, decreasing levels cannot filter away textural pattern due to limited receptive field.</li>
-<li>why use residual network(common sense): it allows direct information propagation between the input and output – easy training, better quality.</li>
-<li>why use convolutions/convolutions for downsampling/upsampling, instead of standard pooling/unpooling: max-pooling breaks spatial continuity.</li>
-<li>why use skipping (common sense): information at certain level in the downsampling network can be directly passed to the corresponding layer of upscaling network without compression.</li>
-<li>why use MSE instead of MAE as regularization: keep the tones of structural lines.</li>
-</ol>
-<h3 id="Potential-applications"><a href="#Potential-applications" class="headerlink" title="Potential applications"></a>Potential applications</h3><p>ommitted.</p>
-<h2 id="My-thoughts"><a href="#My-thoughts" class="headerlink" title="My thoughts"></a>My thoughts</h2><ol>
-<li><p><strong>Really no assumption?</strong> Does this method work when apply test on a picture with the screen patterns do not emerged in pattern library used to sythsize training data set? Especially I see on page 5, the paper mentions “At first glance, it seems…may not exist in real world.” which implies the sensitivity?</p>
-</li>
-<li><p><strong>Can it outperform GAN-based methods?</strong> e.g. <a href="https://arxiv.org/abs/1611.07004" target="_blank" rel="noopener">pix2pix</a></p>
-</li>
-<li><p><strong>How to utilize the sparsity.</strong> Notice the sparsity (most of the pixels are filled with pure white) of structural line drawings, how can we utilize the property? Maybe an unevenly weighted(larger coefficients on false-positive terms) l2 regularization? Or define a structural MAE with 8-connected region (to avoid losing tone but keep sparse output)?</p>
-</li>
-<li><p>Image to image translation can be regarded as a combination of CV and CG, the downscaling part is CV job, and upscaling part is for CG.</p>
-</li>
-</ol>
-<h2 id="Retrospect-Some-knowlege-points"><a href="#Retrospect-Some-knowlege-points" class="headerlink" title="Retrospect Some knowlege points"></a>Retrospect Some knowlege points</h2><ol>
-<li><a href="https://www.zhihu.com/question/43609045/answer/130868981" target="_blank" rel="noopener">Deconvolution</a> (precisely, transposed convolution) </li>
-<li><a href="https://blog.csdn.net/A_a_ron/article/details/79181108" target="_blank" rel="noopener">Unpooling</a></li>
-</ol>
+        <p>最近在学习cuda，这里po出我使用的资料和遇到的问题。<br><a id="more"></a></p>
+<h2 id="cuda是什么"><a href="#cuda是什么" class="headerlink" title="cuda是什么"></a>cuda是什么</h2><h3 id="CUDA的定义"><a href="#CUDA的定义" class="headerlink" title="CUDA的定义"></a>CUDA的定义</h3><p>CUDA的全称是Compute Unified Device Architecture，统一计算架构。以下内容摘自<a href="https://blogs.nvidia.com/blog/2012/09/10/what-is-cuda-2/" target="_blank" rel="noopener">官方博客</a></p>
+<blockquote>
+<p>Most people confuse CUDA for a language or maybe an API. It is not.<br>It’s more than that. CUDA is a parallel computing platform and programming model that makes using a GPU for general purpose computing simple and elegant. The developer still programs in the familiar C, C++, Fortran, or an ever expanding list of supported languages, and incorporates extensions of these languages in the form of a few basic keywords.  </p>
+</blockquote>
+<p>意思是CUDA不是一门语言（你仍然使用（扩展了的）C/C++, Fortran以及其语言编程），也不是API，而是一个并行编程平台和一种编程模型，它使得用GPU来做通用计算简单优雅。下面的这张图来自<a href="https://www.youtube.com/watch?v=F620ommtjqk&amp;list=PLAwxTw4SYaPnFKojVQrmyOGFCqHTxfdv2" target="_blank" rel="noopener">CS344</a>课程，我觉得比较形象地解释了CUDA的编程模型：<br><img src="/2018/09/27/cuda编程入门/cuda.png" title="cuda"></p>
+<h3 id="cuda与cuDNN的关系"><a href="#cuda与cuDNN的关系" class="headerlink" title="cuda与cuDNN的关系"></a>cuda与cuDNN的关系</h3><p>cudnn全称是CUDA Deep Neural Network library，顾名思义，这是一个<strong>基于cuda</strong>的为深度神经网络优化的<strong>库</strong>。所以cuda比cuDNN更基础，更底层。</p>
+<h2 id="cuda安装"><a href="#cuda安装" class="headerlink" title="cuda安装"></a>cuda安装</h2><p>我是通过runfile安装的，下载地址在<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">这里</a>。<br>我在安装过程中主要参考了下面两个材料:</p>
+<ul>
+<li><a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#runfile-nouveau" target="_blank" rel="noopener">官方文档(英文版)</a></li>
+<li><a href="https://blog.csdn.net/QLULIBIN/article/details/78714596" target="_blank" rel="noopener">一篇博客(中文版)</a></li>
+</ul>
+<p>上面的博客大部分是官方文档的翻译，也包括一些作者的总结。我按官方文档执行了Pre-installation Actions和Deisabling Nauveou，然后执行runfile， 接着就成功编译了示例代码。这期间出现了一些library缺失的问题，谷歌一下能很快解决。</p>
+<p>根据我的安装过程来看，最重要的一步是<strong>禁用Nauveou然后重启linux</strong>继续安装。</p>
+<h2 id="学习cuda编程"><a href="#学习cuda编程" class="headerlink" title="学习cuda编程"></a>学习cuda编程</h2><p>主要参考资料: <a href="https://www.youtube.com/watch?v=F620ommtjqk&amp;list=PLAwxTw4SYaPnFKojVQrmyOGFCqHTxfdv2" target="_blank" rel="noopener">Intro to Parallel Programming</a><br>课程的slide和代码练习可以在github上找到: <a href="https://github.com/udacity/cs344" target="_blank" rel="noopener">Udacity CS344</a></p>
+<h2 id="Problem-shooting"><a href="#Problem-shooting" class="headerlink" title="Problem shooting"></a>Problem shooting</h2><h3 id="为什么cudaMalloc中第一个参数是void-类型，而不是单指针？"><a href="#为什么cudaMalloc中第一个参数是void-类型，而不是单指针？" class="headerlink" title="为什么cudaMalloc中第一个参数是void**类型，而不是单指针？"></a>为什么cudaMalloc中第一个参数是void**类型，而不是单指针？</h3><p>提示：传值？传引用？<br><a href="https://devtalk.nvidia.com/default/topic/418460/-void-amp-d-why-two-/" target="_blank" rel="noopener">这个链接</a>中<em>teju</em>给出了很好的回答(5楼)。</p>
+<h3 id="cmake编译cuda"><a href="#cmake编译cuda" class="headerlink" title="cmake编译cuda?"></a>cmake编译cuda?</h3><p>参考<a href="https://www.cnblogs.com/haiyang21/p/7788063.html" target="_blank" rel="noopener">这里</a>.</p>
+<h3 id="编译时遇到错误-undefined-reference-to-cv-imread-cv-String-const-amp-int-’"><a href="#编译时遇到错误-undefined-reference-to-cv-imread-cv-String-const-amp-int-’" class="headerlink" title="编译时遇到错误:undefined reference to `cv::imread(cv::String const&amp;, int)’"></a>编译时遇到错误:undefined reference to `cv::imread(cv::String const&amp;, int)’</h3><p>跟安装的opencv版本有关, opencv3的接口有所改变，opencv3中将imread的实现放到了libopencv_imgcodecs模块中，因此编译时应该加上<code>-lopencv_imgcodecs</code>。<br>参看stackoverflow上的<a href="https://stackoverflow.com/questions/34497099/opencv-undefined-reference-to-imread" target="_blank" rel="noopener">这个问题</a>.</p>
+<p>顺便一提找解决方法时发现的一个很好用的工具<a href="https://zh.wikipedia.org/wiki/Pkg-config" target="_blank" rel="noopener">pkg-config</a>, 使用示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">leizhu@pc-office:~/git_repo/cs344/Problem Sets/Problem Set 1$ pkg-config --libs opencv</span><br><span class="line">-lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_videostab -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_datasets -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hdf -lopencv_line_descriptor -lopencv_optflow -lopencv_video -lopencv_plot -lopencv_reg -lopencv_saliency -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_rgbd -lopencv_viz -lopencv_surface_matching -lopencv_text -lopencv_ximgproc -lopencv_calib3d -lopencv_features2d -lopencv_flann -lopencv_xobjdetect -lopencv_objdetect -lopencv_ml -lopencv_xphoto -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_photo -lopencv_imgproc -lopencv_core</span><br><span class="line">leizhu@pc-office:~/git_repo/cs344/Problem Sets/Problem Set 1$ pkg-config --cflags opencv</span><br><span class="line">-I/usr/include/opencv</span><br><span class="line">leizhu@pc-office:~/git_repo/cs344/Problem Sets/Problem Set 1$ pkg-config --modversion opencv</span><br><span class="line">3.2.0</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -513,7 +499,7 @@
     <strong>Post author: </strong>ZHU Lei</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/" title="[Reading Notes] Deep Extraction of Manga Structural Lines">http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/</a>
+    <a href="http://leifzhu.github.io/2018/09/27/cuda编程入门/" title="cuda编程入门">http://leifzhu.github.io/2018/09/27/cuda编程入门/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -526,9 +512,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
-          
-            <a href="/tags/CG/" rel="tag"># CG</a>
+            <a href="/tags/cuda/" rel="tag"># cuda</a>
           
         </div>
       
@@ -541,8 +525,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/02/使用bash脚本监控程序输出并自动执行任务/" rel="next" title="使用bash脚本监控程序输出并自动执行任务">
-                <i class="fa fa-chevron-left"></i> 使用bash脚本监控程序输出并自动执行任务
+              <a href="/2018/09/10/My-favorite-quotes/" rel="next" title="My favorite quotes & writings">
+                <i class="fa fa-chevron-left"></i> My favorite quotes & writings
               </a>
             
           </div>
@@ -550,10 +534,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/08/Daily-progress-20180907/" rel="prev" title="Daily progress - 20180907">
-                Daily progress - 20180907 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -753,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Purpose"><span class="nav-number">1.</span> <span class="nav-text">Purpose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Highlights"><span class="nav-number">2.</span> <span class="nav-text">Highlights</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison-with-related-works"><span class="nav-number">2.1.</span> <span class="nav-text">Comparison with related works</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-data-generation"><span class="nav-number">2.2.</span> <span class="nav-text">Training data generation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN-frame-work-design"><span class="nav-number">2.3.</span> <span class="nav-text">CNN frame-work design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Potential-applications"><span class="nav-number">2.4.</span> <span class="nav-text">Potential applications</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-thoughts"><span class="nav-number">3.</span> <span class="nav-text">My thoughts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Retrospect-Some-knowlege-points"><span class="nav-number">4.</span> <span class="nav-text">Retrospect Some knowlege points</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cuda是什么"><span class="nav-number">1.</span> <span class="nav-text">cuda是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CUDA的定义"><span class="nav-number">1.1.</span> <span class="nav-text">CUDA的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cuda与cuDNN的关系"><span class="nav-number">1.2.</span> <span class="nav-text">cuda与cuDNN的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cuda安装"><span class="nav-number">2.</span> <span class="nav-text">cuda安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习cuda编程"><span class="nav-number">3.</span> <span class="nav-text">学习cuda编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-shooting"><span class="nav-number">4.</span> <span class="nav-text">Problem shooting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么cudaMalloc中第一个参数是void-类型，而不是单指针？"><span class="nav-number">4.1.</span> <span class="nav-text">为什么cudaMalloc中第一个参数是void**类型，而不是单指针？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmake编译cuda"><span class="nav-number">4.2.</span> <span class="nav-text">cmake编译cuda?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译时遇到错误-undefined-reference-to-cv-imread-cv-String-const-amp-int-’"><span class="nav-number">4.3.</span> <span class="nav-text">编译时遇到错误:undefined reference to `cv::imread(cv::String const&amp;, int)’</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -932,9 +912,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://leifzhu.github.io/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/';
-        this.page.identifier = '2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/';
-        this.page.title = '[Reading Notes] Deep Extraction of Manga Structural Lines';
+        this.page.url = 'http://leifzhu.github.io/2018/09/27/cuda编程入门/';
+        this.page.identifier = '2018/09/27/cuda编程入门/';
+        this.page.title = 'cuda编程入门';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
