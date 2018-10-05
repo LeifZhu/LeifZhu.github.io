@@ -48,7 +48,7 @@ funcPointerArray[0](2, 3);
 (*(funcPointerArray[0]))(2, 3);
 ```
 
-### 一个例子
+## 一个例子
 最后用一个例子结束本篇博客。
 
 ```C++
@@ -99,5 +99,5 @@ using assignment method 2 and calling method 2:
 5>4? 1
 ```
 
-### 参考
+## 参考
 [这篇博客](https://www.cnblogs.com/windlaughing/archive/2013/04/10/3012012.html)内容更加详细。
