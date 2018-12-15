@@ -1,7 +1,7 @@
 ---
 title: Miscellaneous
 date: 2018-08-21 22:17:45
-tags: [linux, deep learning, git, apt]
+tags: [linux, deep learning, C++]
 category: 见得多了
 ---
 
@@ -32,6 +32,13 @@ cntk依赖3.1版，这个目前会安装3.2版，一个workaround是创建软链
 * 意义：将xx的STDOUT重定位到/dev/null(黑洞), STDERR重定位到STDOUT，总的来说就是把程序的任何输出都丢到黑洞。
 * 1前面为什么要加&：如果不加，STDERR就会重定位到一个文件，文件名为'1'。加&予以区分。[(来源)](https://www.xaprb.com/blog/2006/06/06/what-does-devnull-21-mean/)
 ---------------------------------
+## C++
+### 将C++ template的声明和实现分开， 编译时链接错误
+template的声明和实现必须放在同一个文件中。参考下面的两个链接。  
+1. [StackOverflow](https://stackoverflow.com/questions/1353973/c-template-linking-error)  
+2. [知乎](https://www.zhihu.com/question/31845821)
+
+-----------------------------------
 ## Shell
 
 ### shell tutorial
