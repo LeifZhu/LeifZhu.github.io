@@ -106,27 +106,25 @@
 
 
 
-  <meta name="description" content="有时候我们需要执行这样的任务：当程序执行到一定的条件时就杀死进程，执行下一进程，这种“条件”通常是通过程序的输出来反馈的。我们不希望一直盯着屏幕来观察条件是否达到，用bash脚本来执行这种任务是一个明智的选择。">
-<meta name="keywords" content="linux,bash">
+  <meta name="description" content="写这篇博客的动机是因为在知乎上看到了问题为什么最小二乘法要用最小误差平方和来拟合（为什么不用立方和，或者开方和）？从统计的角度来看，这是使用高斯分布建模噪声+最大似然估计的结果。">
+<meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用bash脚本监控程序输出并自动执行任务">
-<meta property="og:url" content="http://leifzhu.github.io/2018/09/02/使用bash脚本监控程序输出并自动执行任务/index.html">
+<meta property="og:title" content="最小二乘法为什么使用平方误差">
+<meta property="og:url" content="http://leifzhu.github.io/2018/12/16/最小二乘法为什么使用平方误差/index.html">
 <meta property="og:site_name" content="Leif&#39;s Blog">
-<meta property="og:description" content="有时候我们需要执行这样的任务：当程序执行到一定的条件时就杀死进程，执行下一进程，这种“条件”通常是通过程序的输出来反馈的。我们不希望一直盯着屏幕来观察条件是否达到，用bash脚本来执行这种任务是一个明智的选择。">
+<meta property="og:description" content="写这篇博客的动机是因为在知乎上看到了问题为什么最小二乘法要用最小误差平方和来拟合（为什么不用立方和，或者开方和）？从统计的角度来看，这是使用高斯分布建模噪声+最大似然估计的结果。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://leifzhu.github.io/2018/09/02/使用bash脚本监控程序输出并自动执行任务/task.svg">
-<meta property="og:updated_time" content="2018-09-09T16:24:47.868Z">
+<meta property="og:updated_time" content="2018-12-15T18:46:45.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用bash脚本监控程序输出并自动执行任务">
-<meta name="twitter:description" content="有时候我们需要执行这样的任务：当程序执行到一定的条件时就杀死进程，执行下一进程，这种“条件”通常是通过程序的输出来反馈的。我们不希望一直盯着屏幕来观察条件是否达到，用bash脚本来执行这种任务是一个明智的选择。">
-<meta name="twitter:image" content="http://leifzhu.github.io/2018/09/02/使用bash脚本监控程序输出并自动执行任务/task.svg">
+<meta name="twitter:title" content="最小二乘法为什么使用平方误差">
+<meta name="twitter:description" content="写这篇博客的动机是因为在知乎上看到了问题为什么最小二乘法要用最小误差平方和来拟合（为什么不用立方和，或者开方和）？从统计的角度来看，这是使用高斯分布建模噪声+最大似然估计的结果。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://leifzhu.github.io/2018/09/02/使用bash脚本监控程序输出并自动执行任务/"/>
+  <link rel="canonical" href="http://leifzhu.github.io/2018/12/16/最小二乘法为什么使用平方误差/"/>
 
 
 
@@ -136,7 +134,7 @@
   };
 </script>
 
-  <title>使用bash脚本监控程序输出并自动执行任务 | Leif's Blog</title>
+  <title>最小二乘法为什么使用平方误差 | Leif's Blog</title>
   
 
 
@@ -363,7 +361,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/09/02/使用bash脚本监控程序输出并自动执行任务/">
+    <link itemprop="mainEntityOfPage" href="http://leifzhu.github.io/2018/12/16/最小二乘法为什么使用平方误差/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHU Lei">
@@ -380,7 +378,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">使用bash脚本监控程序输出并自动执行任务</h2>
+          <h2 class="post-title" itemprop="name headline">最小二乘法为什么使用平方误差</h2>
         
 
         <div class="post-meta">
@@ -392,7 +390,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-02T21:32:19+08:00">2018-09-02</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-16T02:41:38+08:00">2018-12-16</time>
             
 
             
@@ -413,7 +411,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/人生经验/" itemprop="url" rel="index"><span itemprop="name">人生经验</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习一个/" itemprop="url" rel="index"><span itemprop="name">学习一个</span></a></span>
 
                 
                 
@@ -428,9 +426,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/02/使用bash脚本监控程序输出并自动执行任务/#comments" itemprop="discussionUrl">
+                <a href="/2018/12/16/最小二乘法为什么使用平方误差/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/02/使用bash脚本监控程序输出并自动执行任务/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/12/16/最小二乘法为什么使用平方误差/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -458,25 +456,14 @@
       
 
       
-        <p>有时候我们需要执行这样的任务：当程序执行到一定的条件时就杀死进程，执行下一进程，这种“条件”通常是通过程序的输出来反馈的。我们不希望一直盯着屏幕来观察条件是否达到，用bash脚本来执行这种任务是一个明智的选择。<br><a id="more"></a></p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>我要做的事情可以用下面的流程图描述。该任务的目标是检查不同的配置参数对训练运行速度的影响。</p>
-<img src="/2018/09/02/使用bash脚本监控程序输出并自动执行任务/task.svg" title="任务描述">
-<h2 id="使用bash脚本监控程序运行"><a href="#使用bash脚本监控程序运行" class="headerlink" title="使用bash脚本监控程序运行"></a>使用bash脚本监控程序运行</h2><p>bash脚本如下。思路是训练程序的输出重定向到文件mx_alexnet.log，然后每隔2秒用tail查看mx_alexnet.log的最后一行，检测loss的最新值, 如果达到target，就结束程序，然后重新开始。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> run()</span><br><span class="line">&#123;</span><br><span class="line">	interval=2</span><br><span class="line">	target=1.5	</span><br><span class="line">	logfile=mx_alexnet.log</span><br><span class="line"></span><br><span class="line">	<span class="comment"># set knobs</span></span><br><span class="line">	<span class="built_in">export</span> MXNET_CPU_WORKER_NTHREADS=<span class="variable">$1</span></span><br><span class="line">	<span class="built_in">export</span> MXNET_CPU_PRIORITY_NTHREADS=<span class="variable">$2</span></span><br><span class="line">	<span class="built_in">export</span> MXNET_CPU_NNPACK_NTHREADS=<span class="variable">$3</span></span><br><span class="line">	<span class="built_in">export</span> MXNET_EXEC_ENABLE_INPLACE=<span class="variable">$4</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># start training</span></span><br><span class="line">	python code/train_imagenet.py --network alexnet \</span><br><span class="line">				 --num-classes 8 \</span><br><span class="line">				 --data-train /root/zl_workspace/dataset/imagenet8/mxnet-format/train_rec.rec \</span><br><span class="line">				 --data-val /root/zl_workspace/dataset/imagenet8/mxnet-format/val_rec.rec \</span><br><span class="line">				 --num-examples 10400 \</span><br><span class="line">				 --num-epochs 20 \</span><br><span class="line">				 --loss <span class="string">'ce'</span> \</span><br><span class="line">				 --disp-batches 1 \</span><br><span class="line">				 --batch-size 256 \</span><br><span class="line">				 --lr 0.01 \</span><br><span class="line">				 --lr-step-epochs 5,10 \</span><br><span class="line">				 &gt;<span class="variable">$logfile</span> 2&gt;&amp;1 &amp;</span><br><span class="line">	</span><br><span class="line">	<span class="comment"># stat the time</span></span><br><span class="line">	begin_time=$(date +%s)</span><br><span class="line">	sleep 10</span><br><span class="line"></span><br><span class="line">	<span class="comment"># monitor loss</span></span><br><span class="line">	<span class="keyword">for</span>((;;))</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		tail -n1 <span class="variable">$logfile</span></span><br><span class="line">		loss=$(tail -n1 <span class="variable">$logfile</span> | sed -n <span class="string">'s/.*\scross-entropy=\([0-9]\+.[0-9]\+\)*/\1/p'</span>) </span><br><span class="line">		<span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$loss</span>"</span> ] </span><br><span class="line">		<span class="keyword">then</span></span><br><span class="line">			<span class="keyword">if</span> [ $(<span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;loss&#125;</span> &lt; <span class="variable">$&#123;target&#125;</span>"</span> | bc) -eq 1 ]</span><br><span class="line">			<span class="keyword">then</span></span><br><span class="line">				<span class="built_in">break</span></span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				sleep <span class="variable">$interval</span></span><br><span class="line">			<span class="keyword">fi</span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			sleep <span class="variable">$interval</span></span><br><span class="line">		<span class="keyword">fi</span></span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">	<span class="comment"># record the time of runnig</span></span><br><span class="line">	end_time=$(date +%s)</span><br><span class="line">	run_time=$((end_time - begin_time))</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span>, <span class="variable">$2</span>, <span class="variable">$3</span>, <span class="variable">$4</span>, <span class="variable">$run_time</span>"</span> &gt;&gt; <span class="string">"<span class="variable">$5</span>"</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"training finshed! Cost <span class="variable">$&#123;run_time&#125;</span> s."</span></span><br><span class="line"></span><br><span class="line">	<span class="comment"># kill the process</span></span><br><span class="line">	ps aux | grep <span class="string">"python code/train_imagenet.py"</span> | grep -v <span class="string">"grep"</span> | awk &#123;<span class="string">'print $2'</span>&#125; | xargs <span class="built_in">kill</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"killed process successfully!"</span></span><br><span class="line">	rm -f <span class="variable">$logfile</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"finished removal successfully!"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># make sure the training is not going currently</span></span><br><span class="line">ps aux | grep <span class="string">"python code/train_imagenet.py"</span> | grep -v <span class="string">"grep"</span> | awk &#123;<span class="string">'print $2'</span>&#125; | xargs <span class="built_in">kill</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># create a file to record running time</span></span><br><span class="line">rfile=results.csv</span><br><span class="line">touch <span class="variable">$rfile</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"mcwn, mcpn, mcnn, meei, run_time"</span> &gt; <span class="variable">$rfile</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> mcwn <span class="keyword">in</span> 1 2 4 8; <span class="keyword">do</span></span><br><span class="line">	<span class="keyword">for</span> mcpn <span class="keyword">in</span> 4 1 2 8; <span class="keyword">do</span></span><br><span class="line">		<span class="keyword">for</span> mcnn <span class="keyword">in</span> 4 1 2 8; <span class="keyword">do</span></span><br><span class="line">			<span class="keyword">for</span> meei <span class="keyword">in</span> <span class="literal">true</span> <span class="literal">false</span>; <span class="keyword">do</span></span><br><span class="line">				<span class="keyword">if</span> [ $((<span class="variable">$mcwn</span> + <span class="variable">$mcpn</span> + <span class="variable">$mcnn</span>)) -le 16 ]</span><br><span class="line">				<span class="keyword">then</span></span><br><span class="line">					run <span class="variable">$mcwn</span> <span class="variable">$mcpn</span> <span class="variable">$mcnn</span> <span class="variable">$meei</span> <span class="variable">$rfile</span></span><br><span class="line">					<span class="built_in">echo</span> <span class="string">"waiting for restart..."</span></span><br><span class="line">					sleep 10</span><br><span class="line">				<span class="keyword">fi</span></span><br><span class="line">			<span class="keyword">done</span></span><br><span class="line">		<span class="keyword">done</span></span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h2 id="几个细节"><a href="#几个细节" class="headerlink" title="几个细节"></a>几个细节</h2><h3 id="bash中比较浮点数的大小"><a href="#bash中比较浮点数的大小" class="headerlink" title="bash中比较浮点数的大小"></a>bash中比较浮点数的大小</h3><p>bash本身是只支持比较整数的大小，要比较浮点数大小需要借助程序<code>bc</code>，所以上面中的代码中检测loss值用的是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ $(<span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;loss&#125;</span> &lt; <span class="variable">$&#123;target&#125;</span>"</span> | bc) -eq 1 ]</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></p>
-<p>而不是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="variable">$&#123;loss&#125;</span> &lt; <span class="variable">$&#123;target&#125;</span> ]</span><br></pre></td></tr></table></figure></p>
-<p>详情请 在terminal下<code>man bc</code>。</p>
-<h3 id="bash中的复合逻辑表达式"><a href="#bash中的复合逻辑表达式" class="headerlink" title="bash中的复合逻辑表达式"></a>bash中的复合逻辑表达式</h3><p>注意脚本中的这一段<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$loss</span>"</span> ] </span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="keyword">if</span> [ $(<span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;loss&#125;</span> &lt; <span class="variable">$&#123;target&#125;</span>"</span> | bc) -eq 1 ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        sleep <span class="variable">$interval</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    sleep <span class="variable">$interval</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
-<p>为什么不写成下面这样？<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$loss</span>"</span> -a $(<span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;loss&#125;</span> &lt; <span class="variable">$&#123;target&#125;</span>"</span> | bc) -eq 1 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">break</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    sleep <span class="variable">$interval</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
-<p>因为bash脚本中的复合逻辑表达式不像C语言中那样会被优化，当正则表达式没有匹配到值而使loss为空时，尽管<code>-n &quot;$loss&quot;</code>为真，<code>-a</code>后面的 <code>$(echo &quot;${loss} &lt; ${target}&quot; | bc) -eq 1</code>仍然会执行，然后就会报错。</p>
-<h2 id="bash-script教程及几个常用的命令"><a href="#bash-script教程及几个常用的命令" class="headerlink" title="bash script教程及几个常用的命令"></a>bash script教程及几个常用的命令</h2><p>bash教程：<a href="http://www.runoob.com/linux/linux-shell.html" target="_blank" rel="noopener">中文</a>-<a href="https://www.tutorialspoint.com/unix/" target="_blank" rel="noopener">英文</a></p>
-<p>本文中涉及的几个常用的命令</p>
-<ol>
-<li>sed: <a href="http://man.linuxde.net/sed" target="_blank" rel="noopener">here</a></li>
-<li>grep: <a href="http://man.linuxde.net/grep" target="_blank" rel="noopener">here</a></li>
-<li>awk: <a href="http://man.linuxde.net/awk" target="_blank" rel="noopener">here</a></li>
-<li>xargs: <a href="https://blog.gtwang.org/linux/xargs-command-examples-in-linux-unix/" target="_blank" rel="noopener">教程[1]</a> - <a href="http://man.linuxde.net/xargs" target="_blank" rel="noopener">教程[2]</a></li>
-</ol>
+        <p>写这篇博客的动机是因为在知乎上看到了问题<a href="https://www.zhihu.com/question/20792901" target="_blank" rel="noopener">为什么最小二乘法要用最小误差平方和来拟合（为什么不用立方和，或者开方和）</a>？从统计的角度来看，这是使用高斯分布建模噪声+最大似然估计的结果。</p>
+<a id="more"></a>
+<p>现在假设你有一个数据集 ${(x_i, y_i)}^{n}_{i=1}$ , 其中$x_i \in R^d$，  $y_i \in R$。 现在我们希望用一个线性函数$y = w^Tx + b$ 来拟合这组数据。我们知道这组数据未必严格地分布在某条直线或者某个超平面上，也就是说，我们应当假设<br>$$y_i = w^{T}x_i + \epsilon_i$$<br>这里$\epsilon_i$是数据中的噪声。接下来我们使用<strong>最大似然估计</strong>来得到参数的估计值（一句话解释最大似然估计：对潜在参数的估计值应当使得观测结果出现的概率最大）。首先写下似然函数的表达式</p>
+<p>$$<br>p(y | w, b, X) = \prod_{i=0}^n p(y_i | w, b, X) \<br>               = \prod_{i=0}^n p(\epsilon_i = y_i - (w^Tx_i + b))<br>$$</p>
+<p>现在，<strong>假设$\epsilon_i$独立同分布于$N(0, \sigma^2)$</strong>, 那么<br>$$<br>p(\epsilon_i = y_i - (w^Tx_i + b) = \frac{1}{\sqrt{2\pi} \sigma} exp(-\frac{(y_i - (w^Tx_i + b))^2}{\sigma ^ 2})<br>$$</p>
+<p>于是<br>$$<br>p(y | w, b, X) = \prod_{i=0}^n \frac{1}{\sqrt{2\pi} \sigma} exp(\frac{(y_i - (w^Tx_i + b))^2}{\sigma ^ 2}) \<br>\propto exp(-\sum_{i=1}^n \frac{(y_i - (w^Tx_i + b))^2}{\sigma ^ 2})<br>$$</p>
+<p>显然，最大化似然函数等价于最小化平方误差和<br>$$<br>\sum_{i=1}^n (y_i - (w^Tx_i + b))^2<br>$$<br>这就得到了我们熟悉的最小二乘法。</p>
+<p>类似地，如果我们假设噪声$\epsilon_i$独立同分布于<a href="https://zh.wikipedia.org/wiki/拉普拉斯分布" target="_blank" rel="noopener">拉普拉斯分布</a>， 那么目标函数应为绝对值误差的和，而非平方误差。</p>
 
       
     </div>
@@ -498,7 +485,7 @@
     <strong>Post author: </strong>ZHU Lei</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://leifzhu.github.io/2018/09/02/使用bash脚本监控程序输出并自动执行任务/" title="使用bash脚本监控程序输出并自动执行任务">http://leifzhu.github.io/2018/09/02/使用bash脚本监控程序输出并自动执行任务/</a>
+    <a href="http://leifzhu.github.io/2018/12/16/最小二乘法为什么使用平方误差/" title="最小二乘法为什么使用平方误差">http://leifzhu.github.io/2018/12/16/最小二乘法为什么使用平方误差/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -511,9 +498,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/tags/bash/" rel="tag"># bash</a>
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
           
         </div>
       
@@ -526,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/24/usr-lib64-libstdc-so-6-version-CXXABI-1-3-8-not-found/" rel="next" title="Solve "libstdc++.so.6:&ensp;version CXXABI_1.3.8 not found"">
-                <i class="fa fa-chevron-left"></i> Solve "libstdc++.so.6:&ensp;version CXXABI_1.3.8 not found"
+              <a href="/2018/10/05/常量指针和指针常量-const-应该加在哪儿？/" rel="next" title="常量指针和指针常量--const 应该加在哪儿？">
+                <i class="fa fa-chevron-left"></i> 常量指针和指针常量--const 应该加在哪儿？
               </a>
             
           </div>
@@ -535,10 +520,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/07/Reading-Notes-Deep-Extraction-of-Manga-Structural-Lines/" rel="prev" title="[Reading Notes] Deep Extraction of Manga Structural Lines">
-                [Reading Notes] Deep Extraction of Manga Structural Lines <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -597,17 +578,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -732,22 +704,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用bash脚本监控程序运行"><span class="nav-number">2.</span> <span class="nav-text">使用bash脚本监控程序运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个细节"><span class="nav-number">3.</span> <span class="nav-text">几个细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bash中比较浮点数的大小"><span class="nav-number">3.1.</span> <span class="nav-text">bash中比较浮点数的大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash中的复合逻辑表达式"><span class="nav-number">3.2.</span> <span class="nav-text">bash中的复合逻辑表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-script教程及几个常用的命令"><span class="nav-number">4.</span> <span class="nav-text">bash script教程及几个常用的命令</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -921,9 +877,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://leifzhu.github.io/2018/09/02/使用bash脚本监控程序输出并自动执行任务/';
-        this.page.identifier = '2018/09/02/使用bash脚本监控程序输出并自动执行任务/';
-        this.page.title = '使用bash脚本监控程序输出并自动执行任务';
+        this.page.url = 'http://leifzhu.github.io/2018/12/16/最小二乘法为什么使用平方误差/';
+        this.page.identifier = '2018/12/16/最小二乘法为什么使用平方误差/';
+        this.page.title = '最小二乘法为什么使用平方误差';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
